@@ -1,178 +1,98 @@
-# Requirements Specification — Booking Platform
+# Requirements Specification
 
-| Поле        | Значение                    |
+| Space       | Meaning                     |
 |-------------|-----------------------------|
-| version      | 1.0                         |
-| date of publish     | 2026-10-19                  |
-
-
----
-
-## 1. Цель проекта
-Веб-платформа для онлайн-бронирования туров с админ-панелью для управления
-турами, бронями и пользователями.
-
-## 2. Приоритизация (MoSCoW)
-- **M — Must have**: без этого релиз невозможен (MVP).
-- **S — Should have**: важно, но можно выпустить без этого.
-- **C — Could have**: желательно, если останется время.
-- **W — Won't have (this release)**: осознанно не делаем сейчас.
-
-## 3. Роли
-
-| ID     | Роль    | Описание                                  |
-|--------|---------|-------------------------------------------|
-| ROLE-1 | Guest   | Неавторизованный посетитель               |
-| ROLE-2 | Client  | Зарегистрированный пользователь           |
-| ROLE-3 | Manager | Сотрудник, управляет бронями              |
-| ROLE-4 | Admin   | Полный доступ, управление пользователями  |
-
-## 4. Глоссарий
-
-| Термин  | Определение                                              |
-|---------|----------------------------------------------------------|
-| Тур     | Продукт с датой, ценой и лимитом мест                    |
-| Бронь   | Заявка клиента на конкретный тур и количество мест       |
-| Слот    | Конкретная дата тура с доступным числом мест             |
+| version     | 1.0                         |
+| date of publish     | 2026-10-19          |
+| project_name | YuksalUp                   |
 
 ---
 
-## 5. Функциональные требования
+## 1. Project description
+A web platform where school students can find internships/volunteering opportunities/debates/olympiads and study cases.
 
-### 5.1 Authentication (AUTH)
+### 2. Development priorities
 
-| ID      | Требование                                                        | Роль        | Приоритет |
-|---------|-------------------------------------------------------------------|-------------|-----------|
-| FR-AUTH-01 | Регистрация по email и паролю                                  | Guest       | **M** |
-| FR-AUTH-02 | Подтверждение email по ссылке                                  | Guest       | **S** |
-| FR-AUTH-03 | Вход по email и паролю                                         | Guest       | **M** |
-| FR-AUTH-04 | Выход из системы (инвалидация refresh-токена)                  | Client+     | **M** |
-| FR-AUTH-05 | Восстановление пароля через email                              | Guest       | **M** |
-| FR-AUTH-06 | Вход через Google                                              | Guest       | **C** |
-| FR-AUTH-07 | Двухфакторная аутентификация                                   | Client+     | **W** |
+- In this project every feature is mandatory and required to be developed fully. 
 
-**Критерии приёмки FR-AUTH-03:**
-- Given: зарегистрированный пользователь с подтверждённым email
-- When: вводит верные email и пароль
-- Then: получает access-токен (15 мин) и refresh-токен (7 дней)
-- При неверном пароле: ответ 401, без уточнения, что именно неверно
-- После 5 неудачных попыток подряд: блокировка входа на 15 минут (см. BR-03)
+### 3. Roles
 
-### 5.2 Tours (TOUR)
+| ID     | Roles   | Description                                                                        |
+|--------|---------|------------------------------------------------------------------------------------|
+| ROLE-1 | User    | ordinary user                                                                      |
+| ROLE-4 | Admin   | availability to update/add/remove/ posters, manage accounts and control the system |
 
-| ID         | Требование                                              | Роль    | Приоритет |
-|------------|---------------------------------------------------------|---------|-----------|
-| FR-TOUR-01 | Просмотр каталога туров с пагинацией                    | Guest   | **M** |
-| FR-TOUR-02 | Фильтрация по дате, цене, направлению                   | Guest   | **M** |
-| FR-TOUR-03 | Полнотекстовый поиск по названию и описанию             | Guest   | **S** |
-| FR-TOUR-04 | Страница тура: описание, фото, цена, свободные даты     | Guest   | **M** |
-| FR-TOUR-05 | Создание, редактирование и архивирование тура           | Manager | **M** |
-| FR-TOUR-06 | Загрузка фотографий тура (до 10 шт., до 5 МБ каждая)    | Manager | **M** |
-| FR-TOUR-07 | Отзывы и рейтинг туров                                  | Client  | **C** |
 
-### 5.3 Booking (BOOK)
+### 4.1 Authentication (AUTH)
 
-| ID         | Требование                                                  | Роль    | Приоритет |
-|------------|-------------------------------------------------------------|---------|-----------|
-| FR-BOOK-01 | Создание брони на выбранную дату и количество мест          | Client  | **M** |
-| FR-BOOK-02 | Просмотр списка своих броней и их статусов                  | Client  | **M** |
-| FR-BOOK-03 | Отмена брони клиентом                                       | Client  | **M** |
-| FR-BOOK-04 | Подтверждение и отклонение брони менеджером                 | Manager | **M** |
-| FR-BOOK-05 | Email-уведомление при смене статуса брони                   | System  | **S** |
-| FR-BOOK-06 | Заказ трансфера вместе с бронью                             | Client  | **C** |
+| ID      | Requirements                                                                                    | Role        | 
+|---------|-------------------------------------------------------------------------------------------------|-------------|
+| YU-AUTH-01 | Registration with following fields: first name, last name, email, password                   | User      |
+| YU-AUTH-02 | Verification through a link sent to provided email by user                                   | User      | 
+| YU-AUTH-03 | Log in through email and password                                                            | User      | 
+| YU-AUTH-04 | Access token every 15 minutes and refresh token every 3 days                                 | User      | 
+| YU-AUTH-05 | Password recovery through email (verified by link)                                           | User      | 
 
-**Критерии приёмки FR-BOOK-01:**
-- Нельзя забронировать больше мест, чем свободно в слоте (BR-01)
-- Бронь создаётся со статусом `PENDING`
-- Места резервируются на 30 минут до оплаты (BR-02)
-- Одновременные запросы на последнее место не приводят к овербукингу
+### 4.2 Poster and applications
 
-### 5.4 Payments (PAY)
+| ID         | Requirements                                                                                 | Role    | 
+|------------|----------------------------------------------------------------------------------------------|---------|
+| YU-POST-01 | Viewing catalog of posters on the bord                                                       | User  | 
+| YU-POST-02 | Poster page: name, dates, description, important application information                     | User  | 
+| YU-POST-03 | Full-text search by title and description of poster                                          | User  | 
+| YU-POST-04 | Filtration based on several key words selected by user                                       | User  | 
+| YU-POST-05 | Availability of saving programs into favorites page                                          | User  | 
+| YU-POST-06 | Calendar of events and programs                                                              | User  | 
+| YU-POST-07 | Selection of programs and directions of interest after successful email verification         | User  | 
+| YU-POST-08 | Profile: view personal data and settings                                                     | User  | 
 
-| ID        | Требование                                         | Роль   | Приоритет |
-|-----------|----------------------------------------------------|--------|-----------|
-| FR-PAY-01 | Онлайн-оплата брони через платёжного провайдера    | Client | **M** |
-| FR-PAY-02 | Обработка webhook об успешной или неуспешной оплате| System | **M** |
-| FR-PAY-03 | Возврат средств при отмене                         | Manager| **S** |
-| FR-PAY-04 | Оплата частями                                     | Client | **W** |
 
-### 5.5 Admin panel (ADM)
+### 4.3 Admin panel
 
-| ID        | Требование                                         | Роль  | Приоритет |
-|-----------|----------------------------------------------------|-------|-----------|
-| FR-ADM-01 | Управление пользователями и их ролями              | Admin | **M** |
-| FR-ADM-02 | Блокировка пользователя                            | Admin | **M** |
-| FR-ADM-03 | Дашборд: брони и выручка за период                 | Admin | **S** |
-| FR-ADM-04 | Экспорт броней в CSV                               | Admin | **C** |
-| FR-ADM-05 | Журнал действий администраторов (audit log)        | Admin | **S** |
+| ID        | Requirements                                       | Role  | 
+|-----------|----------------------------------------------------|-------|
+| YU-ADM-01 | Manage users and their accounts                    | Admin | 
+| YU-ADM-02 | Dashboard: Registered Users and account details    | Admin | 
+| YU-ADM-03 | Create, edit, and delete posters in the admin panel| Admin | 
 
 ---
 
-## 6. Нефункциональные требования
+## 5. Non-functional requirements
 
-| ID      | Категория       | Требование                                                         | Приоритет |
-|---------|-----------------|--------------------------------------------------------------------|-----------|
-| NFR-01  | Performance     | p95 времени ответа API < 300 мс при 100 RPS                        | **M** |
-| NFR-02  | Scalability     | Поддержка до 10 000 активных пользователей в месяц                 | **M** |
-| NFR-03  | Security        | Пароли хэшируются bcrypt/argon2, хранятся только хэши              | **M** |
-| NFR-04  | Security        | Все запросы только по HTTPS                                        | **M** |
-| NFR-05  | Security        | Rate limiting: не более 10 запросов/мин на эндпоинты auth с одного IP | **M** |
-| NFR-06  | Availability    | Доступность 99.5% в месяц                                          | **S** |
-| NFR-07  | Reliability     | Ежедневный бэкап БД, хранение 14 дней                              | **M** |
-| NFR-08  | Observability   | Структурированные логи и мониторинг ошибок                         | **S** |
-| NFR-09  | Localization    | Интерфейс на русском и английском                                  | **S** |
-| NFR-10  | Compliance      | Согласие на обработку персональных данных при регистрации          | **M** |
+| ID      | Category        | Requirements                                                       | 
+|---------|-----------------|--------------------------------------------------------------------|
+| NFR-03  | Security        | Пароли хэшируются bcrypt, хранятся только хэши                     | 
+| NFR-04  | Security        | Все запросы только по HTTPS                                        | 
+| NFR-05  | Security        | Rate limiting: не более 10 запросов/мин на эндпоинты auth с одного IP | 
+| NFR-07  | Reliability     | Ежедневный бэкап БД, хранение 14 дней                              | 
+| NFR-08  | Observability   | Структурированные логи и мониторинг ошибок                         | 
+| NFR-09  | Localization    | Интерфейс на русском, английском и узбекском языках                | 
+| NFR-10  | Compliance      | Согласие на обработку персональных данных при регистрации          | 
 
 ---
 
-## 7. Бизнес-правила
+## 6. Business rules
 
-| ID    | Правило                                                                 | Связано с        |
+| ID    | Rule                                                                    | Connected with   |
 |-------|-------------------------------------------------------------------------|------------------|
-| BR-01 | Число забронированных мест не может превышать лимит слота               | FR-BOOK-01       |
-| BR-02 | Неоплаченная бронь автоматически отменяется через 30 минут              | FR-BOOK-01, FR-PAY-01 |
-| BR-03 | После 5 неудачных попыток входа — блокировка на 15 минут                | FR-AUTH-03       |
-| BR-04 | Клиент может отменить бронь не позже чем за 24 часа до начала тура      | FR-BOOK-03       |
-| BR-05 | При отмене более чем за 7 дней возвращается 100%, от 7 дней до 24 часов — 50% | FR-PAY-03  |
-| BR-06 | Архивный тур не отображается в каталоге, но существующие брони сохраняются | FR-TOUR-05    |
+| BR-01 | It is possible to apply for the program on a third-party page, only     |                  |
+| BR-02 | User is obliged to fill form regarding his personal information         |                  |
+| BR-03 | After an unsuccessful search for programs, other directions appear in the suggestion | YU-POST-04 |
 
----
+--- 
 
-## 8. Ограничения
+## 7. Stacks
 
-| ID    | Ограничение                                              |
+| ID    | Development                                              |
 |-------|----------------------------------------------------------|
-| CON-01 | Backend: <ваш стек>, БД: PostgreSQL                     |
-| CON-02 | Платёжный провайдер: <название>                         |
-| CON-03 | Срок MVP: <дата>                                        |
-| CON-04 | Хостинг: <провайдер / VPS>                              |
-
-## 9. Out of scope (не входит в проект)
-- Мобильное приложение
-- Мультивалютность
-- Интеграция с внешними агрегаторами туров
-
-## 10. Допущения и открытые вопросы
-
-| ID    | Вопрос                                                     | Статус  |
-|-------|------------------------------------------------------------|---------|
-| Q-01  | Нужен ли отдельный кабинет для партнёров-туроператоров?    | Открыт  |
-| Q-02  | Какие способы оплаты обязательны?                          | Открыт  |
+| CON-01 | Backend: Python - FastAPI, БД: PostgreSQL               |
+| CON-03 | DEV deadline:                                           |
+| CON-04 | Hosting and domain                                      |
 
 ---
 
-## 11. Сводка по приоритетам
-
-| Приоритет | Кол-во FR | Входит в          |
-|-----------|-----------|-------------------|
-| Must      | 17        | MVP (v1.0)        |
-| Should    | 6         | v1.1              |
-| Could     | 4         | backlog           |
-| Won't     | 2         | следующие релизы  |
-
-## 12. История изменений
+## 8. История изменений
 
 | Версия | Дата       | Изменение                         | Автор |
 |--------|------------|-----------------------------------|-------|
-| 0.1    | 2026-10-15 | Первая версия по итогам интервью  | <имя> |
-| 1.0    | 2026-10-19 | Согласовано с клиентом            | <имя> |
+| 1.0    | 2026-10-19 | Первая версия по итогам интервью  | Jersey|
