@@ -1,0 +1,196 @@
+.benefits {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-48);
+  padding-top: 112px;
+}
+
+.grid {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-16);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: var(--radius-40);
+}
+
+.text {
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--muted);
+}
+
+/* 01 — yellow card */
+.discover {
+  flex: 0 0 464px;
+  min-height: 644px;
+  gap: var(--space-24);
+  padding: 36px;
+  background: var(--yellow);
+}
+
+.discoverTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 50px;
+  letter-spacing: -1.2px;
+  color: var(--navy);
+}
+
+.discoverText {
+  font-size: 16px;
+  line-height: 25px;
+  color: var(--navy);
+}
+
+.growth {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.growthArrow {
+  display: block;
+  width: 132px;
+  height: 132px;
+}
+
+/* 02–04 — wash cards */
+.more {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.interests {
+  min-height: 265px;
+  flex-direction: row;
+  gap: var(--space-20);
+  padding: var(--space-32);
+  background: var(--wash);
+}
+
+.interestsCopy {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-20);
+}
+
+.interestsTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 47px;
+  letter-spacing: -0.3px;
+  color: var(--navy);
+}
+
+.globe {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 104px;
+  height: 104px;
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+}
+
+.globeIcon {
+  display: block;
+  width: 56px;
+  height: 56px;
+}
+
+.pair {
+  display: flex;
+  gap: var(--space-16);
+}
+
+.small {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 363px;
+  gap: var(--space-24);
+  padding: 28px;
+  background: var(--wash);
+}
+
+.smallTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 42px;
+  letter-spacing: -0.3px;
+  color: var(--navy);
+}
+
+.calendar {
+  display: block;
+  width: 44px;
+  height: 44px;
+}
+
+@media (max-width: 959px) {
+  .benefits {
+    gap: var(--space-32);
+    padding-top: var(--space-80);
+  }
+
+  .grid,
+  .pair {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-16);
+  }
+
+  .discover {
+    flex: none;
+    min-height: 420px;
+    padding: 28px;
+  }
+
+  .discoverTitle {
+    font-size: 36px;
+    line-height: 43px;
+  }
+
+  .growthArrow {
+    width: 96px;
+    height: 96px;
+  }
+
+  .interests {
+    min-height: 265px;
+  }
+
+  .interestsTitle {
+    font-size: 26px;
+    line-height: 40px;
+  }
+
+  .globe {
+    width: 64px;
+    height: 64px;
+  }
+
+  .globeIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .small {
+    flex: none;
+    min-height: 280px;
+  }
+}

@@ -1,0 +1,197 @@
+.band {
+  border-bottom: 1px solid var(--line);
+  padding: 1px 0 0;
+  background: var(--paper);
+}
+
+.card {
+  width: min(var(--container), 100% - 2 * var(--gutter));
+  margin: 0 auto;
+  padding: var(--space-16) var(--space-24);
+  border: var(--stroke-1) solid var(--line);
+  border-radius: var(--radius-28);
+  background: var(--paper);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-24);
+}
+
+.desktopNav {
+  display: flex;
+  align-items: center;
+  padding: var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--wash);
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.signIn button,
+.signIn a {
+  min-width: 104px;
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: 0 var(--space-8);
+  border-radius: var(--radius-pill);
+  background: var(--yellow);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--navy);
+}
+
+.menuControl {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+}
+
+.menuIcon {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.mobilePanel {
+  display: none;
+}
+
+/* app screens: header spans the page with 64px side margins and has no band border */
+.wide {
+  border-bottom: 0;
+  padding: 0;
+}
+
+.wide .card {
+  width: calc(100% - 128px);
+}
+
+/* admin: the card keeps the 1160px container width */
+.wide.contained .card {
+  width: min(var(--container), 100% - 2 * var(--gutter));
+}
+
+/* student app: card hugs its content, centered, 24px above and below */
+.centered {
+  padding: var(--space-24) 0;
+}
+
+.centered .card {
+  width: fit-content;
+  max-width: calc(100% - 2 * var(--gutter));
+  margin: 0 auto;
+}
+
+@media (max-width: 959px) {
+  .centered {
+    padding: var(--space-16);
+  }
+
+  .centered .card,
+  .wide .card,
+  .card {
+    width: 100%;
+    max-width: none;
+    padding: var(--space-16);
+  }
+
+  .desktopNav,
+  .account {
+    display: none;
+  }
+
+  .menuControl {
+    display: inline-flex;
+  }
+
+  .mobilePanel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+    padding-top: var(--space-16);
+  }
+
+  .mobileNav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobileLink {
+    display: flex;
+    width: 100%;
+  }
+
+  .mobileLink > * {
+    flex: 1;
+  }
+
+  .mobileAccount {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* auth screens: logo only */
+.minimal {
+  display: flex;
+  align-items: center;
+  padding: var(--space-24) 64px 0;
+}
+
+.staticLang {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  min-width: 64px;
+  margin: 0 var(--space-8);
+  border: 1px solid var(--navy);
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--navy);
+}
+
+.mobileExtra {
+  font-size: 14px;
+  color: var(--navy);
+  text-decoration: underline;
+}
+
+@media (max-width: 959px) {
+  .minimal {
+    padding: var(--space-16) var(--space-24) 0;
+  }
+}
+
+.menuControl {
+  transition: background-color 0.15s ease;
+}
+
+.menuControl:hover {
+  background: var(--secondary);
+}
+
+.mobileExtra:hover {
+  text-decoration-thickness: 2px;
+}

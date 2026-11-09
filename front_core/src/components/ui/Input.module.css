@@ -1,0 +1,73 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-8);
+  width: 100%;
+}
+
+.label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--navy);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.field {
+  height: 44px;
+  width: 100%;
+  padding: var(--space-12);
+  border: var(--stroke-1) solid var(--line);
+  border-radius: var(--radius-20);
+  background: var(--paper);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--navy);
+}
+
+.field::placeholder {
+  color: var(--muted);
+}
+
+/* focus = 2px strong border (1px border + 1px ring so the layout does not shift) */
+.field:focus {
+  outline: none;
+  border-color: var(--navy);
+  box-shadow: 0 0 0 1px var(--navy);
+}
+
+/* error = soft-yellow fill + 3px strong border + explicit message */
+.error {
+  background: var(--soft-yellow);
+  border-color: var(--navy);
+  box-shadow: 0 0 0 2px var(--navy);
+}
+
+.field:disabled {
+  background: var(--secondary);
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+.helper {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--muted);
+}
+
+.helperError {
+  color: var(--navy);
+}
+
+.field {
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.field:hover:not(:disabled):not(:focus) {
+  border-color: var(--navy);
+}

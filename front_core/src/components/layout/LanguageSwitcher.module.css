@@ -1,0 +1,41 @@
+.root {
+  position: relative;
+}
+
+.trigger button,
+.trigger a {
+  min-width: 64px;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% - 4px);
+  right: var(--space-8);
+  z-index: 10;
+  min-width: 64px;
+  padding: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-20);
+  background: var(--paper);
+  box-shadow: 0 8px 24px rgba(31, 48, 94, 0.12);
+}
+
+.option {
+  display: block;
+  width: 100%;
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: var(--navy);
+}
+
+.option:hover {
+  background: var(--wash);
+}
+
+.current {
+  background: var(--gray);
+}

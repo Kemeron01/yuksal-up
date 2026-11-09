@@ -1,0 +1,32 @@
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-12);
+  height: 44px;
+}
+
+.lettering {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.3px;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+.inverse {
+  color: var(--text-inverse);
+}
+
+.inverse .up {
+  color: var(--yellow);
+}
+
+.wordmark {
+  transition: opacity 0.15s ease;
+}
+
+.wordmark:hover {
+  opacity: 0.8;
+}

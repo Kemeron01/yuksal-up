@@ -1,0 +1,151 @@
+.page {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background: var(--paper);
+}
+
+.workspace,
+.footer {
+  width: min(var(--container), 100% - 2 * var(--gutter));
+  margin: 0 auto;
+}
+
+.workspace {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: flex-start;
+  gap: var(--space-24);
+  padding-top: var(--space-48);
+  padding-bottom: var(--space-40);
+}
+
+.nav {
+  display: flex;
+  flex: 0 0 224px;
+  width: 224px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-24);
+  padding: var(--space-20);
+  border-radius: var(--radius-32);
+  background: var(--wash);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  height: var(--space-32);
+  padding: var(--space-4) var(--space-12);
+  border-radius: var(--radius-pill);
+  background: var(--secondary);
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+.navTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.8px;
+  color: var(--navy);
+}
+
+.navText {
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--muted);
+}
+
+.links {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.link {
+  padding: var(--space-12);
+  border-radius: var(--radius-20);
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--navy);
+}
+
+.link:hover {
+  background: var(--secondary);
+}
+
+.linkActive,
+.linkActive:hover {
+  background: var(--paper);
+}
+
+.note {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--muted);
+}
+
+.main {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+  padding: var(--space-16) 0;
+}
+
+.copyright {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--muted);
+}
+
+.privacy {
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--navy);
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+@media (max-width: 959px) {
+  .workspace {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav {
+    flex: none;
+    width: 100%;
+  }
+
+  .navTitle {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .links {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+  }
+}
+
+.privacy:hover {
+  text-decoration-thickness: 2px;
+}

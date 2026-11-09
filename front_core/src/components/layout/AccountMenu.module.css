@@ -1,0 +1,77 @@
+.root {
+  position: relative;
+  margin: 0 var(--space-8);
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background: var(--yellow);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--navy);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 20;
+  display: flex;
+  min-width: 220px;
+  flex-direction: column;
+  padding: var(--space-8);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-20);
+  background: var(--paper);
+  box-shadow: 0 8px 24px rgba(31, 48, 94, 0.12);
+}
+
+.who {
+  padding: var(--space-8) var(--space-12) var(--space-12);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: var(--space-4);
+}
+
+.name {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--navy);
+}
+
+.email {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.item {
+  display: block;
+  width: 100%;
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-12);
+  text-align: left;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--navy);
+}
+
+.item:hover {
+  background: var(--wash);
+}
+
+.avatar {
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.avatar:hover {
+  background: var(--yellow-hover, #f3d466);
+  box-shadow: 0 0 0 3px var(--soft-yellow);
+}

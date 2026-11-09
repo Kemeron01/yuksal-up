@@ -1,0 +1,12 @@
+.eyebrow {
+  display: inline-flex;
+  justify-content: center;
+  min-width: 240px;
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-pill);
+  background: var(--wash);
+  color: var(--navy);
+  font-size: 13px;
+  line-height: 20px;
+  text-align: center;
+}

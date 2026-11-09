@@ -1,0 +1,31 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-24);
+  padding: var(--space-24) var(--space-80);
+  font-size: 12px;
+  line-height: 18px;
+  white-space: nowrap;
+  background: var(--paper);
+}
+
+.copyright {
+  color: var(--muted);
+}
+
+.privacy {
+  color: var(--navy);
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+@media (max-width: 959px) {
+  .footer {
+    padding: var(--space-24);
+  }
+}
+
+.privacy:hover {
+  text-decoration-thickness: 2px;
+}

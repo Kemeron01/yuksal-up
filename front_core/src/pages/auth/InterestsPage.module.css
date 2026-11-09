@@ -1,0 +1,11 @@
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-12) var(--space-8);
+}
+
+.count {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--muted);
+}

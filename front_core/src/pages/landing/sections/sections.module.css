@@ -1,0 +1,5 @@
+/* Shared wrapper for every landing section: 1160px column with the vertical rhythm from the design. */
+.section {
+  width: min(var(--container), 100% - 2 * var(--gutter));
+  margin: 0 auto;
+}

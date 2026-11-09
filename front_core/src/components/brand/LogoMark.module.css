@@ -1,0 +1,49 @@
+.mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  background: var(--navy);
+}
+
+.inverse {
+  background: var(--yellow);
+}
+
+.symbol {
+  display: block;
+}
+
+.header {
+  width: 44px;
+  height: 44px;
+  padding: var(--space-8);
+  border-radius: var(--radius-20);
+}
+
+.header .symbol {
+  width: 24px;
+  height: 24px;
+}
+
+.footer {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-20);
+}
+
+.footer .symbol {
+  width: 42px;
+  height: 42px;
+}
+
+.footerMobile {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-20);
+}
+
+.footerMobile .symbol {
+  width: 34px;
+  height: 34px;
+}

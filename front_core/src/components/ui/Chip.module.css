@@ -1,0 +1,50 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  height: var(--space-32);
+  padding: var(--space-4) var(--space-12);
+  border-radius: var(--radius-pill);
+  background: var(--secondary);
+  color: var(--navy);
+  font-size: 14px;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.selected {
+  background: var(--navy);
+  color: var(--text-inverse);
+}
+
+.label {
+  font: inherit;
+  color: inherit;
+}
+
+.remove {
+  font-size: 16px;
+  line-height: 24px;
+  color: inherit;
+}
+
+.large {
+  height: 48px;
+}
+
+button.chip,
+.chip:has(> .label) {
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+button.chip:not(.selected):hover {
+  background: var(--gray);
+}
+
+button.chip.selected:hover {
+  background: var(--navy-hover);
+}
+
+.remove:hover {
+  opacity: 0.65;
+}

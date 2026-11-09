@@ -1,0 +1,100 @@
+.choice {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-12);
+  min-height: 40px;
+  padding: var(--space-8) 0;
+  cursor: pointer;
+}
+
+.choice:has(input:disabled) {
+  cursor: not-allowed;
+}
+
+.label {
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--navy);
+}
+
+.choice:has(input:disabled) .label {
+  color: var(--muted);
+}
+
+.input {
+  appearance: none;
+  flex: none;
+  display: grid;
+  place-content: center;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  border: var(--stroke-1) solid var(--navy);
+  background: var(--paper);
+  color: var(--text-inverse);
+}
+
+.input:focus-visible {
+  outline: var(--stroke-2) solid var(--navy);
+  outline-offset: 3px;
+}
+
+.input:disabled {
+  border-color: var(--line);
+  background: var(--secondary);
+}
+
+/* checkbox */
+.checkbox {
+  border-radius: var(--radius-8);
+}
+
+.checkbox:checked {
+  background: var(--navy);
+}
+
+.checkbox:checked::after {
+  content: '✓';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.checkbox:checked:disabled {
+  background: var(--gray);
+  color: var(--navy);
+}
+
+/* radio: a solid circular mark shows selection without relying on colour */
+.radio {
+  border-radius: 50%;
+}
+
+.radio:checked::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--navy);
+}
+
+.radio:checked:disabled::after {
+  background: var(--muted);
+}
+
+.input {
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.choice:hover .input:not(:disabled) {
+  box-shadow: 0 0 0 4px var(--secondary);
+}
+
+.choice:hover .input.checkbox:checked:not(:disabled) {
+  background: var(--navy-hover);
+}
+
+.choice:hover .label {
+  text-decoration: underline;
+  text-underline-position: from-font;
+}

@@ -1,0 +1,49 @@
+:root {
+  /* colors (Figma variables) */
+  --navy: #1f305e; /* color/bg/action, color/text/primary, color/border/strong, color/icon/primary */
+  --yellow: #f8de7e; /* yellow, icon-accent */
+  --paper: #ffffff;
+  --wash: #f5f5f5;
+  --gray: #c7c7c7;
+  --line: #e6e6e6;
+  --muted: #737373; /* muted, icon-secondary */
+  --text-inverse: #ffffff;
+  --secondary: #efefef;
+  --soft-yellow: #fff8dc;
+  --navy-hover: #2a3f75;
+
+  /* spacing */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-80: 80px;
+
+  /* radius */
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-20: 20px;
+  --radius-24: 24px;
+  --radius-28: 28px;
+  --radius-32: 32px;
+  --radius-36: 36px;
+  --radius-40: 40px;
+  --radius-pill: 999px;
+
+  --stroke-1: 1px;
+  --stroke-2: 2px;
+  --stroke-3: 3px;
+
+  /* fonts */
+  --font-display: 'Space Grotesk', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* layout */
+  --container: 1160px;
+  --gutter: 18px;
+}

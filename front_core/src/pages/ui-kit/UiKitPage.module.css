@@ -1,0 +1,80 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+  width: min(1240px, 100%);
+  margin: 0 auto;
+  padding: var(--space-40);
+  background: var(--paper);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 58px;
+  letter-spacing: -1.2px;
+}
+
+.lead {
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--muted);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.3px;
+}
+
+.sectionText {
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-16) var(--space-24);
+  align-items: start;
+}
+
+.specimen {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-8);
+}
+
+.caption {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--muted);
+}
+
+@media (max-width: 959px) {
+  .page {
+    padding: var(--space-24) var(--gutter);
+  }
+
+  .h1 {
+    font-size: 34px;
+    line-height: 42px;
+  }
+}

@@ -1,0 +1,102 @@
+.form {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.field {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 46px;
+  align-items: center;
+  gap: var(--space-8);
+  padding: 0 var(--space-12);
+  border: var(--stroke-1) solid var(--line);
+  border-radius: var(--radius-20);
+  background: var(--wash);
+}
+
+.field:focus-within {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 1px var(--navy);
+}
+
+.icon {
+  display: block;
+  flex: none;
+  width: 24px;
+  height: 24px;
+}
+
+.input {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--navy);
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+/* design: the Search button is a bare 44px pill without the 8px focus inset */
+.search {
+  padding: 0;
+  min-width: 136px;
+}
+
+.search button {
+  width: 100%;
+}
+
+.filters {
+  display: none;
+  padding: 0;
+}
+
+@media (max-width: 959px) {
+  .form {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-12);
+  }
+
+  .actions {
+    gap: var(--space-12);
+  }
+
+  .search,
+  .filters {
+    display: flex;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .search > *,
+  .filters > * {
+    flex: 1 1 0;
+  }
+}
+
+.field {
+  transition: border-color 0.15s ease;
+}
+
+.field:hover {
+  border-color: var(--navy);
+}

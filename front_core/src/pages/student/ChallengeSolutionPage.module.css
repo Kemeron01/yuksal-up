@@ -1,0 +1,146 @@
+.layout {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-32);
+}
+
+.work {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-24);
+}
+
+.work > div:last-child {
+  display: flex;
+  width: 188px;
+}
+
+.receipt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-20);
+  padding: var(--space-24);
+  border: var(--stroke-1) solid var(--line);
+  border-radius: var(--radius-32);
+  background: var(--soft-yellow);
+}
+
+.icon,
+.fileIcon {
+  display: block;
+  flex: none;
+  width: 24px;
+  height: 24px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.8px;
+  color: var(--navy);
+}
+
+.challenge {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--navy);
+}
+
+.meta {
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--muted);
+}
+
+.lead {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--muted);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+  padding: var(--space-24);
+  border: var(--stroke-1) solid var(--line);
+  border-radius: var(--radius-32);
+  background: var(--paper);
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.3px;
+  color: var(--navy);
+}
+
+.solution,
+.feedback {
+  white-space: pre-wrap;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--navy);
+}
+
+.attachment {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-12);
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--navy);
+}
+
+.feedbackHeading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.symbol {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-20);
+  background: var(--yellow);
+}
+
+.identity {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.small {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--muted);
+}
+
+@media (max-width: 959px) {
+  .layout {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .title {
+    font-size: 28px;
+    line-height: 36px;
+  }
+}

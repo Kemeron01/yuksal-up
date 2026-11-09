@@ -1,0 +1,38 @@
+.status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  min-width: 144px;
+  height: var(--space-32);
+  padding: var(--space-4) var(--space-12);
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--navy);
+}
+
+.open { background: var(--soft-yellow); }
+.submitted { background: var(--secondary); }
+.closed { background: var(--gray); }
+
+.reviewed {
+  background: var(--navy);
+  color: var(--text-inverse);
+}
+
+.reviewed .dot {
+  background: var(--yellow);
+}
+
+.compact {
+  min-width: 0;
+}

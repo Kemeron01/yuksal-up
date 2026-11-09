@@ -1,0 +1,115 @@
+.slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+  max-width: 100%;
+}
+
+.block {
+  display: flex;
+  width: 100%;
+}
+
+.fill {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.sized {
+  width: var(--slot-d);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  height: 44px;
+  padding: var(--space-12) var(--space-20);
+  border-radius: var(--radius-pill);
+  border: var(--stroke-1) solid transparent;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.wide {
+  min-width: 176px;
+}
+
+.primary {
+  background: var(--navy);
+  color: var(--text-inverse);
+}
+
+.primary:hover {
+  background: var(--navy-hover);
+}
+
+.outline {
+  background: var(--paper);
+  color: var(--navy);
+  border-color: var(--navy);
+}
+
+.outline:hover {
+  background: var(--wash);
+}
+
+.accent {
+  background: var(--yellow);
+  color: var(--navy);
+}
+
+.accent:hover {
+  background: var(--soft-yellow);
+}
+
+.secondary {
+  background: var(--secondary);
+  color: var(--navy);
+}
+
+.secondary:hover {
+  background: var(--gray);
+}
+
+.soft {
+  background: var(--wash);
+  color: var(--navy);
+}
+
+.soft:hover {
+  background: #ececec;
+}
+
+.active {
+  background: var(--gray);
+  color: var(--navy);
+}
+
+.button:focus-visible {
+  outline: var(--stroke-3) solid var(--navy);
+  outline-offset: 4px;
+}
+
+/* disabled keeps the written label readable on a gray surface */
+.button:disabled {
+  background: var(--gray);
+  color: var(--navy);
+  cursor: not-allowed;
+}
+
+.outline:disabled {
+  border-color: var(--line);
+}
+
+@media (max-width: 959px) {
+  .sized {
+    width: var(--slot-m);
+  }
+}

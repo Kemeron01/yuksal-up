@@ -1,0 +1,155 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.caption {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--muted);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.8px;
+  color: var(--navy);
+}
+
+.text {
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--muted);
+}
+
+.symbol {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-24);
+  background: var(--yellow);
+}
+
+.symbolIcon {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.email {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-16);
+  border: var(--stroke-1) solid var(--line);
+  border-radius: var(--radius-20);
+}
+
+.emailIcon {
+  display: block;
+  flex: none;
+  width: 24px;
+  height: 24px;
+}
+
+.emailText {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--navy);
+}
+
+.link {
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--navy);
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+.center {
+  text-align: center;
+}
+
+.hint {
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--muted);
+}
+
+.notice {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding: var(--space-16);
+  border-radius: var(--radius-24);
+  background: var(--soft-yellow);
+}
+
+.noticeTitle {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--navy);
+}
+
+.account {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+}
+
+.accountQuestion {
+  color: var(--muted);
+}
+
+.accountLink {
+  color: var(--navy);
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-16);
+}
+
+.row {
+  display: flex;
+  gap: var(--space-16);
+}
+
+.row > * {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+@media (max-width: 959px) {
+  .title {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.3px;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+}
+
+.accountLink:hover,
+.link:hover {
+  text-decoration-thickness: 2px;
+}

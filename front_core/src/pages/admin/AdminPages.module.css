@@ -1,0 +1,256 @@
+.muted {
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--muted);
+}
+
+.caption {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--muted);
+}
+
+.strong {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--navy);
+}
+
+.body {
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--navy);
+}
+
+.bodyLarge {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--navy);
+}
+
+.link {
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--navy);
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+.identity {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding-right: var(--space-16);
+}
+
+.metrics {
+  display: flex;
+  gap: var(--space-16);
+}
+
+.metric {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: var(--space-20);
+  padding: var(--space-24);
+  border: var(--stroke-1) solid var(--line);
+  border-radius: var(--radius-32);
+  background: var(--paper);
+}
+
+.metricValue {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 58px;
+  letter-spacing: -1.2px;
+  color: var(--navy);
+}
+
+.actionCard {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: var(--space-16);
+  padding: var(--space-20);
+  border-radius: var(--radius-28);
+  background: var(--paper);
+}
+
+.actionCopy {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.recent {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: var(--space-20);
+}
+
+.recentRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.recentRow .identity {
+  flex: 1 1 0;
+}
+
+.details {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-20) var(--space-24);
+  margin: 0;
+}
+
+.details div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.details dt {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--muted);
+}
+
+.details dd {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--navy);
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.linkButton {
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--navy);
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+@media (max-width: 959px) {
+  .metrics {
+    flex-direction: column;
+  }
+
+  .actionCard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .details {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.selectField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.selectField label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--navy);
+}
+
+.select {
+  height: 44px;
+  padding: 0 var(--space-12);
+  border: var(--stroke-1) solid var(--line);
+  border-radius: var(--radius-20);
+  background: var(--paper);
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--navy);
+}
+
+.topics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-8);
+}
+
+.errorText {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 500;
+  color: var(--navy);
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-20);
+  padding: var(--space-24);
+  border-radius: var(--radius-32);
+  background: var(--paper);
+}
+
+.previewTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.8px;
+  color: var(--navy);
+}
+
+.chips {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+@media (max-width: 959px) {
+  .topics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .previewTitle {
+    font-size: 28px;
+    line-height: 36px;
+  }
+}
+
+.link:hover,
+.linkButton:hover {
+  text-decoration-thickness: 2px;
+}

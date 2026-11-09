@@ -1,0 +1,10 @@
+.page {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background: var(--paper);
+}
+
+.content {
+  flex: 1 1 auto;
+}

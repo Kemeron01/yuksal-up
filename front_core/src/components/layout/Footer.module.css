@@ -1,0 +1,92 @@
+.section {
+  width: min(var(--container), 100% - 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 72px 0 var(--space-32);
+}
+
+.card {
+  padding: 34px;
+  border-radius: var(--radius-40);
+  background: var(--wash);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+  container-type: inline-size;
+}
+
+.navigation {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--navy);
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.brandMobile {
+  display: none;
+}
+
+.giant {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 21.5cqw;
+  line-height: 1.2;
+  letter-spacing: -2px;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--navy);
+}
+
+.legal {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-16);
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--muted);
+}
+
+.legal a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 959px) {
+  .section {
+    padding-top: 72px;
+  }
+
+  .card {
+    padding: var(--space-24);
+  }
+
+  .brandDesktop {
+    display: none;
+  }
+
+  .brandMobile {
+    display: block;
+  }
+
+  .giant {
+    font-size: 24.8cqw;
+  }
+
+  .legal {
+    font-size: 10px;
+    line-height: 16px;
+  }
+}

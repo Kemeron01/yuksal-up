@@ -1,0 +1,311 @@
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8) var(--space-12);
+}
+
+.pill {
+  height: 44px;
+  min-width: 216px;
+  padding: var(--space-12) var(--space-20);
+  border-radius: var(--radius-pill);
+  background: var(--secondary);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+.pill:first-child {
+  min-width: 228px;
+}
+
+.pillActive {
+  background: var(--navy);
+  color: var(--text-inverse);
+}
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-24);
+}
+
+.calendar {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: var(--space-20);
+  padding: var(--space-24);
+  border: var(--stroke-1) solid var(--line);
+  border-radius: var(--radius-32);
+  background: var(--paper);
+}
+
+.monthNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+
+.monthTitle,
+.dayTitle,
+.agendaTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.3px;
+  color: var(--navy);
+}
+
+.arrows {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background: var(--secondary);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--navy);
+}
+
+.arrow:hover {
+  background: var(--gray);
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.week {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: var(--space-8);
+}
+
+.weekday {
+  display: flex;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--muted);
+}
+
+.blank,
+.day {
+  height: 72px;
+  border-radius: 16px;
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  background: var(--paper);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--navy);
+}
+
+.day:hover {
+  background: var(--wash);
+}
+
+.hasEvent,
+.hasEvent:hover {
+  background: var(--soft-yellow);
+}
+
+.selected,
+.selected:hover {
+  background: var(--navy);
+  color: var(--text-inverse);
+}
+
+.dot {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.selected .dot {
+  color: var(--yellow);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.selectedDay {
+  display: flex;
+  flex: 0 0 320px;
+  width: 320px;
+  flex-direction: column;
+  gap: var(--space-20);
+  padding: var(--space-24);
+  border: var(--stroke-1) solid var(--line);
+  border-radius: var(--radius-32);
+  background: var(--paper);
+}
+
+.eventBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+}
+
+.eventTitle {
+  display: block;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--navy);
+}
+
+.eventKind {
+  display: block;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--muted);
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background: var(--navy);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-inverse);
+}
+
+.details:hover {
+  background: var(--navy-hover);
+}
+
+.agenda {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+}
+
+.agendaList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-8) var(--space-24);
+}
+
+.agendaItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-16);
+  border: var(--stroke-1) solid var(--line);
+  border-radius: var(--radius-32);
+  background: var(--paper);
+}
+
+.agendaItem:hover {
+  background: var(--wash);
+}
+
+.agendaDay {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 44px;
+  border-radius: var(--radius-12);
+  background: var(--wash);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.3px;
+  color: var(--navy);
+}
+
+.agendaText {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+}
+
+@media (max-width: 1100px) {
+  .agendaList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 959px) {
+  .top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .selectedDay {
+    flex: none;
+    width: 100%;
+  }
+
+  .calendar {
+    padding: var(--space-16);
+  }
+
+  .week {
+    gap: var(--space-4);
+  }
+
+  .blank,
+  .day {
+    height: 52px;
+  }
+
+  .pill,
+  .pill:first-child {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .agendaList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.pill {
+  transition: background-color 0.15s ease;
+}
+
+.pill:not(.pillActive):hover {
+  background: var(--gray);
+}
+
+.pillActive:hover {
+  background: var(--navy-hover);
+}

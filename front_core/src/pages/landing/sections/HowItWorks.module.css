@@ -1,0 +1,23 @@
+.how {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-48);
+  padding-top: 112px;
+}
+
+.steps {
+  display: flex;
+  gap: var(--space-16);
+  list-style: none;
+}
+
+@media (max-width: 959px) {
+  .how {
+    gap: var(--space-32);
+    padding-top: var(--space-80);
+  }
+
+  .steps {
+    flex-direction: column;
+  }
+}

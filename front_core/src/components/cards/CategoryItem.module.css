@@ -1,0 +1,35 @@
+.item {
+  display: flex;
+  width: 180px;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.icon {
+  display: block;
+  flex: none;
+  width: 28px;
+  height: 28px;
+}
+
+.label {
+  font-size: 16px;
+  line-height: 25px;
+  color: var(--muted);
+}
+
+@media (max-width: 959px) {
+  .item {
+    width: 145px;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .label {
+    font-size: 12px;
+    line-height: 19px;
+  }
+}
