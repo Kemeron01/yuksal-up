@@ -14,9 +14,9 @@ export function PageIntro({ caption, title, text }: { caption?: string; title: s
 }
 
 /** 64px yellow tile with a state icon (sent, success, expired …). */
-export function StateSymbol({ children }: { children: ReactNode }) {
+export function StateSymbol({ children, tone = 'info' }: { children: ReactNode; tone?: 'info' | 'success' | 'error' }) {
   return (
-    <span className={styles.symbol} aria-hidden>
+    <span className={`${styles.symbol} ${tone === 'success' ? styles.success : tone === 'error' ? styles.error : ''}`} aria-hidden>
       <span className={styles.symbolIcon}>{children}</span>
     </span>
   );

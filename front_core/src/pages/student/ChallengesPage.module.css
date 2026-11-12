@@ -197,3 +197,42 @@
 .card:hover {
   background: var(--secondary);
 }
+
+.stepsInline {
+  display: none;
+}
+
+@media (max-width: 959px) {
+  .stepsSide {
+    display: none;
+  }
+
+  .stepsInline {
+    display: block;
+    padding: var(--space-12) var(--space-16);
+    border-radius: var(--radius-20);
+    background: var(--soft-yellow);
+    font-size: 12px;
+    line-height: 18px;
+    color: var(--navy);
+  }
+}
+
+.stepsSide {
+  flex: none;
+}
+
+.tabs > span > * {
+  min-width: 180px;
+}
+
+.tabs > span:last-child > * {
+  min-width: 208px;
+}
+
+@media (max-width: 959px) {
+  .tabs > span > *,
+  .tabs > span:last-child > * {
+    min-width: 0;
+  }
+}

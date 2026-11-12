@@ -3,7 +3,7 @@ import { Status } from '@/components/ui/Status';
 import styles from './PageHeading.module.css';
 
 /** Title, intro and the "next step" status pill used at the top of student screens. */
-export function PageHeading({ title, text, status = 'Sizning keyingi qadamingiz' }: { title: string; text: string; status?: string }) {
+export function PageHeading({ title, text, status = '' }: { title: string; text: string; status?: string }) {
   const { tt } = useI18n();
   return (
     <div className={styles.heading}>

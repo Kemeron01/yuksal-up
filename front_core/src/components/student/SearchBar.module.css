@@ -8,13 +8,13 @@
   display: flex;
   flex: 1 1 0;
   min-width: 0;
-  height: 46px;
+  height: 54px;
   align-items: center;
   gap: var(--space-8);
   padding: 0 var(--space-12);
-  border: var(--stroke-1) solid var(--line);
+  border: var(--stroke-1) solid var(--border);
   border-radius: var(--radius-20);
-  background: var(--wash);
+  background: var(--paper);
 }
 
 .field:focus-within {
@@ -52,12 +52,13 @@
 .actions {
   display: flex;
   align-items: center;
+  gap: 2px;
 }
 
 /* design: the Search button is a bare 44px pill without the 8px focus inset */
 .search {
   padding: 0;
-  min-width: 136px;
+  min-width: 0;
 }
 
 .search button {
@@ -65,7 +66,6 @@
 }
 
 .filters {
-  display: none;
   padding: 0;
 }
 

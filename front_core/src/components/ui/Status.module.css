@@ -20,17 +20,23 @@
   background: var(--navy);
 }
 
-.open { background: var(--soft-yellow); }
-.submitted { background: var(--secondary); }
-.closed { background: var(--gray); }
-
-.reviewed {
-  background: var(--navy);
-  color: var(--text-inverse);
+.mark {
+  font-size: 12px;
+  line-height: 1;
 }
 
-.reviewed .dot {
-  background: var(--yellow);
+.open,
+.submitted { background: var(--soft-yellow); }
+.closed { background: var(--secondary); }
+
+.accepted {
+  background: var(--positive-bg);
+  color: var(--positive);
+}
+
+.rejected {
+  background: var(--negative-bg);
+  color: var(--negative);
 }
 
 .compact {

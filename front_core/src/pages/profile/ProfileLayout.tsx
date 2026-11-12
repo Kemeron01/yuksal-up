@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react';
+import { Button as UiButton } from '@/components/shadcn/button';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { initials, useAuth } from '@/data/auth';
 import { AppShell } from '@/components/layout/AppShell';
 import { Button } from '@/components/ui/Button';
-import { Chip } from '@/components/ui/Chip';
-import { Status } from '@/components/ui/Status';
+import { LogOutIcon } from 'lucide-react';
 import styles from './ProfileLayout.module.css';
 import { useI18n } from '@/i18n';
 import { localizeGrade } from '@/data/opportunities';
@@ -24,30 +24,32 @@ function SectionNav() {
   return (
     <>
       {/* desktop: vertical menu */}
+      <div className={styles.sideColumn}>
       <nav className={styles.sideNav} aria-label={tt('Profil bo‘limlari')}>
-        <p className={styles.navCaption}>{tt('PROFIL BO‘LIMLARI')}</p>
         {SECTIONS.map((s) => (
-          <Button key={s.to} to={s.to} variant={pathname === s.to ? 'primary' : 'secondary'} block>
+          <Button key={s.to} to={s.to} variant={pathname === s.to ? 'primary' : 'soft'} block>
             {tt(s.label)}
           </Button>
         ))}
-        <Button
-          variant="outline"
-          block
-          onClick={() => {
-            logout();
-            navigate('/', { replace: true });
-          }}
-        >
-          {tt('Chiqish')}
-        </Button>
+
       </nav>
+      <UiButton variant="unstyled"
+        className={styles.logout}
+        onClick={() => {
+          logout();
+          navigate('/', { replace: true });
+        }}
+      >
+        <LogOutIcon size={16} aria-hidden />
+        {tt('Chiqish')}
+      </UiButton>
+      </div>
 
       {/* mobile: chip tabs */}
       <nav className={styles.tabs} aria-label={tt('Profil bo‘limlari')}>
         {SECTIONS.map((s) => (
           <Link key={s.to} to={s.to} className={styles.tab} aria-current={pathname === s.to ? 'page' : undefined}>
-            <Chip label={tt(s.short)} selected={pathname === s.to} asStatic />
+            {tt(s.short)}
           </Link>
         ))}
       </nav>
@@ -71,7 +73,6 @@ function Identity() {
         </h1>
         <p className={styles.grade}>{sub || user.email}</p>
       </div>
-      <Status state="open" label={tt('Shaxsiy profil')} compact />
     </div>
   );
 }

@@ -4,7 +4,11 @@
 
 .trigger button,
 .trigger a {
-  min-width: 64px;
+  min-width: 0;
+  height: 36px;
+  gap: 4px;
+  padding: 0 var(--space-12);
+  font-size: 12px;
 }
 
 .menu {
@@ -38,4 +42,10 @@
 
 .current {
   background: var(--gray);
+}
+
+@media (max-width: 959px) {
+  .root {
+    padding: 0;
+  }
 }

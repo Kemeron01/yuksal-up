@@ -38,7 +38,7 @@ export function AdminSearch({ placeholder, onSearch }: { placeholder: string; on
           onChange={(e) => setDraft(e.target.value)}
         />
       </div>
-      <Button variant="secondary" type="submit" slot={[140, 140]}>
+      <Button variant="secondary" type="submit" className={styles.searchButton}>
         {tt('Qidirish')}
       </Button>
     </form>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Button as UiButton } from '@/components/shadcn/button';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthLayout } from '@/components/auth/AuthLayout';
 import { AuthLink, EmailAddress, Hint, PageIntro, StateSymbol } from '@/components/auth/AuthParts';
@@ -40,23 +41,25 @@ export function VerifyEmailPage() {
       <PageIntro
         caption={tt('01 / 02 · Hisobni tasdiqlash')}
         title={tt('Pochtangizni tekshiring')}
-        text={tt('Hisobingizni tasdiqlash uchun emailingizdagi havolani bosing.')}
+        text={tt('Tasdiqlash havolasi quyidagi manzilga yuborilishi kerak:')}
       />
       <EmailAddress icon={<SendIcon />} email={email} />
-      <Hint>{tt('Tasdiqlash havolasini shu manzilga yubordik. Xat topilmasa, spam jildini ham tekshiring.')}</Hint>
+      <p className={styles.demo}>{tt('Haqiqiy ilovada xatdagi havola orqali hisobingizni tasdiqlaysiz. Maketda quyidagi tugma orqali keyingi qadamni ko‘rishingiz mumkin.')}</p>
       <Button variant="primary" onClick={openLink} block>
-        {tt('Pochtani ochish')}
+        {tt('Tasdiqlangan holatni ko‘rish')}
       </Button>
-      <p className={styles.demo}>{tt('Demo rejim: haqiqiy xat yuborilmaydi. Tugma xatdagi tasdiqlash havolasini ochishni imitatsiya qiladi.')}</p>
-      <button type="button" className={styles.linkButton} onClick={() => setResent(true)}>
-        {tt('Xatni qayta yuborish')}
-      </button>
+      <div className={styles.linkRow}>
+        <UiButton variant="unstyled" className={styles.linkButton} onClick={() => setResent(true)}>
+          {tt('Xatni qayta yuborish')}
+        </UiButton>
+        <span aria-hidden>·</span>
+        <AuthLink to="/register">{tt('Emailni o‘zgartirish')}</AuthLink>
+      </div>
       {resent && (
         <p className={styles.status} role="status">
           {tt('Xat qayta yuborildi.')}
         </p>
       )}
-      <AuthLink to="/register">{tt('Emailni o‘zgartirish')}</AuthLink>
     </AuthLayout>
   );
 }
@@ -68,6 +71,7 @@ export function ResetLinkSentPage() {
   const { accountExists } = useAuth();
   const navigate = useNavigate();
   const [missing, setMissing] = useState(false);
+  const [resent, setResent] = useState(false);
 
   if (!email) return <Navigate to="/forgot-password" replace />;
 
@@ -82,21 +86,31 @@ export function ResetLinkSentPage() {
         <SendIcon />
       </StateSymbol>
       <PageIntro
-        title={tt('Keyingi qadam — pochtangizda')}
-        text={tt('Agar bu email manziliga bog‘langan hisob bo‘lsa, parolni tiklash havolasi yuboriladi.')}
+        title={tt('Pochtangizni tekshiring')}
+        text={tt('Parolni tiklash havolasi quyidagi manzilga yuborilishi kerak:')}
       />
       <EmailAddress icon={<SendIcon />} email={email} />
       <Button variant="primary" onClick={openLink} block>
-        {tt('Pochtani ochish')}
+        {tt('Tiklash ekranini ko‘rish')}
       </Button>
-      <p className={styles.demo}>{tt('Demo rejim: tugma xatdagi parolni tiklash havolasini ochishni imitatsiya qiladi.')}</p>
       {missing && (
         <p className={styles.status} role="status">
           {tt('Bu email bilan akkaunt topilmadi, xat yuborilmagan.')}
         </p>
       )}
-      <AuthLink to="/login">{tt('Kirishga qaytish')}</AuthLink>
-      <Hint>{tt('Xat kelmadimi? Email manzilini tekshiring yoki spam jildiga qarang.')}</Hint>
+      <div className={styles.linkRow}>
+        <UiButton variant="unstyled" className={styles.linkButton} onClick={() => setResent(true)}>
+          {tt('Xatni qayta yuborish')}
+        </UiButton>
+        <span aria-hidden>·</span>
+        <AuthLink to="/login">{tt('Kirishga qaytish')}</AuthLink>
+      </div>
+      {resent && (
+        <p className={styles.status} role="status">
+          {tt('Xat qayta yuborildi.')}
+        </p>
+      )}
+      <Hint>{tt('Interaktiv maket · Xatlar yuborilmaydi, parollar saqlanmaydi.')}</Hint>
     </AuthLayout>
   );
 }
@@ -110,19 +124,19 @@ export function LinkExpiredPage() {
 
   return (
     <AuthLayout>
-      <StateSymbol>
+      <StateSymbol tone="error">
         <CalendarSmallIcon />
       </StateSymbol>
       <PageIntro
-        title={tt('Havola muddati tugagan')}
-        text={tt('Tasdiqlash havolasi endi ishlamaydi. Davom etish uchun yangi havola oling.')}
+        caption={tt('01 / 02 · Hisobni tasdiqlash')}
+        title={tt('Havola eskirgan')}
+        text={tt('Hisobni tasdiqlash uchun yangi havola so‘rang.')}
       />
       <EmailAddress icon={<SendIcon />} email={email} />
       <Button variant="primary" onClick={() => navigate('/verify-email', { state: { email } })} block>
-        {tt('Yangi havola yuborish')}
+        {tt('Xatni qayta yuborish')}
       </Button>
       <AuthLink to="/register">{tt('Emailni o‘zgartirish')}</AuthLink>
-      <Hint>{tt('Eng so‘nggi yuborilgan xatdagi havoladan foydalaning.')}</Hint>
     </AuthLayout>
   );
 }

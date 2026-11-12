@@ -48,3 +48,27 @@ button.chip.selected:hover {
 .remove:hover {
   opacity: 0.65;
 }
+
+/* toggle-style choice chip (interests): outlined, selected = blue fill + navy border */
+.large {
+  height: 36px;
+  padding: 0 var(--space-16);
+  border: var(--stroke-1) solid var(--border);
+  background: var(--paper);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.large.selected {
+  border-color: var(--navy);
+  background: var(--blue);
+  color: var(--navy);
+}
+
+button.large:not(.selected):hover {
+  background: var(--blue);
+}
+
+button.large.selected:hover {
+  background: #e2e9f8;
+}

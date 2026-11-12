@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
+import { Button as UiButton } from '@/components/shadcn/button';
 import { CheckIcon, ChevronDownIcon } from 'lucide-react';
 import styles from './Select.module.css';
 
@@ -59,8 +60,7 @@ export function Select({ id, value, options, onChange, 'aria-label': ariaLabel }
 
   return (
     <div className={styles.root} ref={rootRef}>
-      <button
-        type="button"
+      <UiButton variant="unstyled"
         id={id}
         className={`${styles.trigger} ${open ? styles.open : ''}`}
         role="combobox"
@@ -73,7 +73,7 @@ export function Select({ id, value, options, onChange, 'aria-label': ariaLabel }
       >
         <span className={styles.value}>{options[selectedIndex]?.label}</span>
         <ChevronDownIcon className={styles.chevron} size={18} aria-hidden />
-      </button>
+      </UiButton>
       {open && (
         <ul id={listId} className={styles.menu} role="listbox">
           {options.map((o, i) => (

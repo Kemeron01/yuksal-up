@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Button as UiButton } from '@/components/shadcn/button';
 import { Link, useNavigate } from 'react-router-dom';
 import { initials, useAuth } from '@/data/auth';
 import styles from './AccountMenu.module.css';
@@ -31,8 +32,7 @@ export function AccountMenu() {
 
   return (
     <div className={styles.root} ref={ref}>
-      <button
-        type="button"
+      <UiButton variant="unstyled"
         className={styles.avatar}
         aria-haspopup="menu"
         aria-expanded={open}
@@ -40,7 +40,7 @@ export function AccountMenu() {
         onClick={() => setOpen((v) => !v)}
       >
         {initials(user)}
-      </button>
+      </UiButton>
       {open && (
         <div className={styles.menu} role="menu">
           <div className={styles.who}>
@@ -57,8 +57,7 @@ export function AccountMenu() {
               {tt('Admin panel')}
             </Link>
           )}
-          <button
-            type="button"
+          <UiButton variant="unstyled"
             className={styles.item}
             role="menuitem"
             onClick={() => {
@@ -68,7 +67,7 @@ export function AccountMenu() {
             }}
           >
             {tt('Chiqish')}
-          </button>
+          </UiButton>
         </div>
       )}
     </div>

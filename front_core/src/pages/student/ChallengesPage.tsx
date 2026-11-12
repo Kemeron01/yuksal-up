@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useAuth } from '@/data/auth';
 import { Chip } from '@/components/ui/Chip';
 import { BookOpenIcon } from '@/components/ui/Icons';
@@ -8,11 +7,12 @@ import { StudentShell } from '@/components/student/StudentShell';
 import { PageHeading } from '@/components/student/PageHeading';
 import { ChallengeSteps } from '@/components/student/ChallengeParts';
 import { CHALLENGES, useSubmissions, type Challenge } from '@/data/challenges';
+import { Button } from '@/components/ui/Button';
 import styles from './ChallengesPage.module.css';
 import { useI18n } from '@/i18n';
 import { localizeDate } from '@/data/opportunities';
 
-function ChallengeCard({ item, status }: { item: Challenge; status?: 'submitted' | 'reviewed' }) {
+function ChallengeCard({ item, status }: { item: Challenge; status?: 'submitted' | 'accepted' | 'rejected' }) {
   const { tt } = useI18n();
   return (
     <article className={styles.card}>
@@ -29,13 +29,7 @@ function ChallengeCard({ item, status }: { item: Challenge; status?: 'submitted'
       </div>
 
       <div>
-        {status === 'reviewed' ? (
-          <Status state="reviewed" label={tt('Ko‘rib chiqilgan')} compact />
-        ) : status === 'submitted' ? (
-          <Status state="submitted" label={tt('Ko‘rib chiqish kutilmoqda')} compact />
-        ) : (
-          <Status state="open" label={tt('Qabul ochiq')} compact />
-        )}
+        {status ? <Status state={status} compact /> : <Status state="open" label={tt('Qabul ochiq')} compact />}
       </div>
 
       <p className={styles.summary}>{tt(item.summary)}</p>
@@ -52,9 +46,9 @@ function ChallengeCard({ item, status }: { item: Challenge; status?: 'submitted'
       </p>
 
       <div className={styles.actions}>
-        <Link className={styles.open} to={status ? `/challenges/${item.id}/solution` : `/challenges/${item.id}`}>
+        <Button flush to={status ? `/challenges/${item.id}/solution` : `/challenges/${item.id}`}>
           {status ? tt('Yechimni ko‘rish') : tt('Keysni ochish')}
-        </Link>
+        </Button>
       </div>
 
       <p className={styles.note}>{tt('Yechimingiz YuksalUp ichida yuboriladi va admin tomonidan ko‘rib chiqiladi.')}</p>
@@ -79,32 +73,26 @@ export function ChallengesPage() {
       />
 
       <div className={styles.tabs} role="tablist" aria-label={tt('Keyslar')}>
-        <button
-          type="button"
-          role="tab"
-          aria-selected={tab === 'all'}
-          className={`${styles.tab} ${tab === 'all' ? styles.tabActive : ''}`}
-          onClick={() => setTab('all')}
-        >
+        <Button flush role="tab" aria-selected={tab === 'all'} variant={tab === 'all' ? 'primary' : 'secondary'} onClick={() => setTab('all')}>
           {tt('Barcha keyslar')}
-        </button>
-        <button
-          type="button"
-          role="tab"
-          aria-selected={tab === 'mine'}
-          className={`${styles.tab} ${tab === 'mine' ? styles.tabActive : ''}`}
-          onClick={() => setTab('mine')}
-        >
+        </Button>
+        <Button flush role="tab" aria-selected={tab === 'mine'} variant={tab === 'mine' ? 'primary' : 'secondary'} onClick={() => setTab('mine')}>
           {tt('Mening yechimlarim')}
-        </button>
+        </Button>
       </div>
 
+      <p className={styles.stepsInline}>
+        1. {tt('Vazifani o‘qing')} → 2. {tt('Yechim yuboring')} → 3. {tt('Fikr-mulohaza oling')}
+      </p>
+
       <div className={styles.catalog}>
-        <ChallengeSteps
-          current={1}
-          title={tt('Qanday ishlaydi?')}
-          footer={tt("Yechimlar YuksalUp ichida yuboriladi va admin tomonidan ko‘rib chiqiladi.")}
-        />
+        <div className={styles.stepsSide}>
+          <ChallengeSteps
+            current={1}
+            title={tt('Qanday ishlaydi?')}
+            footer={tt("Yechimlar YuksalUp ichida yuboriladi va admin tomonidan ko‘rib chiqiladi.")}
+          />
+        </div>
         <div className={styles.list}>
           {tab === 'all' &&
             CHALLENGES.map((c) => <ChallengeCard key={c.id} item={c} status={mineOf(c.id)?.status} />)}
@@ -118,9 +106,9 @@ export function ChallengesPage() {
                   {user ? tt('Keysni oching, yechimingizni yozing va yuboring.') : tt('Yechim yuborish va admin fikrini olish uchun akkauntingizga kiring.')}
                 </p>
                 {!user && (
-                  <Link to="/login" state={{ from: '/challenges' }} className={styles.open}>
+                  <Button flush to="/login" state={{ from: '/challenges' }}>
                     {tt('Kirish')}
-                  </Link>
+                  </Button>
                 )}
               </section>
             ))}

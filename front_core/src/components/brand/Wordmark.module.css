@@ -20,7 +20,7 @@
 }
 
 .inverse .up {
-  color: var(--yellow);
+  color: var(--text-inverse);
 }
 
 .wordmark {
@@ -29,4 +29,15 @@
 
 .wordmark:hover {
   opacity: 0.8;
+}
+
+@media (max-width: 959px) {
+  .lettering {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .wordmark {
+    gap: var(--space-8);
+  }
 }

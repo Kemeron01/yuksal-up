@@ -10,7 +10,7 @@
   width: 44px;
   height: 44px;
   border-radius: var(--radius-pill);
-  background: var(--yellow);
+  background: var(--blue);
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
@@ -72,6 +72,14 @@
 }
 
 .avatar:hover {
-  background: var(--yellow-hover, #f3d466);
-  box-shadow: 0 0 0 3px var(--soft-yellow);
+  background: #e2e9f8;
+  box-shadow: none;
+}
+
+@media (max-width: 959px) {
+  .avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+  }
 }

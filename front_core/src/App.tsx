@@ -23,6 +23,7 @@ import { PrivacyPage } from '@/pages/profile/PrivacyPage';
 import { ProfileInterestsPage } from '@/pages/profile/ProfileInterestsPage';
 import { ProfilePersonalPage } from '@/pages/profile/ProfilePersonalPage';
 import { ProfileSettingsPage } from '@/pages/profile/ProfileSettingsPage';
+import { PasswordChangePage } from '@/pages/profile/PasswordChangePage';
 import { CalendarPage } from '@/pages/student/CalendarPage';
 import { ChallengeBriefPage } from '@/pages/student/ChallengeBriefPage';
 import { ChallengeFormPage } from '@/pages/student/ChallengeFormPage';
@@ -83,6 +84,7 @@ export default function App() {
                   <Route path="/profile" element={student(<ProfilePersonalPage />)} />
                   <Route path="/profile/interests" element={student(<ProfileInterestsPage />)} />
                   <Route path="/profile/settings" element={student(<ProfileSettingsPage />)} />
+                  <Route path="/profile/password" element={student(<PasswordChangePage />)} />
 
                   {/* admin */}
                   <Route path="/admin" element={admin(<DashboardPage />)} />

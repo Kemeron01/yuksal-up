@@ -1,23 +1,22 @@
 .band {
-  border-bottom: 1px solid var(--line);
-  padding: 1px 0 0;
+  padding: var(--space-24) 0 0;
   background: var(--paper);
 }
 
 .card {
   width: min(var(--container), 100% - 2 * var(--gutter));
   margin: 0 auto;
-  padding: var(--space-16) var(--space-24);
-  border: var(--stroke-1) solid var(--line);
-  border-radius: var(--radius-28);
-  background: var(--paper);
 }
 
 .bar {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: var(--space-24);
+}
+
+.bar > :first-child {
+  justify-self: start;
 }
 
 .desktopNav {
@@ -31,6 +30,7 @@
 .account {
   display: flex;
   align-items: center;
+  justify-self: end;
   gap: var(--space-8);
 }
 
@@ -75,48 +75,50 @@
   display: none;
 }
 
-/* app screens: header spans the page with 64px side margins and has no band border */
-.wide {
-  border-bottom: 0;
-  padding: 0;
-}
-
-.wide .card {
-  width: calc(100% - 128px);
-}
-
-/* admin: the card keeps the 1160px container width */
-.wide.contained .card {
-  width: min(var(--container), 100% - 2 * var(--gutter));
-}
-
-/* student app: card hugs its content, centered, 24px above and below */
-.centered {
-  padding: var(--space-24) 0;
-}
-
-.centered .card {
-  width: fit-content;
-  max-width: calc(100% - 2 * var(--gutter));
-  margin: 0 auto;
-}
-
 @media (max-width: 959px) {
-  .centered {
-    padding: var(--space-16);
+  .band {
+    padding: var(--space-16) 0 0;
   }
 
-  .centered .card,
-  .wide .card,
   .card {
-    width: 100%;
-    max-width: none;
-    padding: var(--space-16);
+    width: calc(100% - 2 * var(--space-16));
   }
 
-  .desktopNav,
-  .account {
+  .bar {
+    display: flex;
+    gap: var(--space-8);
+  }
+
+  .desktopNav {
     display: none;
+  }
+
+  .account {
+    margin-left: auto;
+    gap: var(--space-4);
+  }
+
+  .signIn {
+    padding: 0;
+  }
+
+  .signIn button,
+  .signIn a {
+    min-width: 0;
+    height: 36px;
+    padding: 0 var(--space-12);
+  }
+
+  .menuControl {
+    width: 36px;
+    height: 36px;
+    flex: none;
+  }
+
+  .avatar {
+    margin: 0;
+    width: 36px;
+    height: 36px;
   }
 
   .menuControl {
@@ -194,4 +196,10 @@
 
 .mobileExtra:hover {
   text-decoration-thickness: 2px;
+}
+
+/* without the nav pill (admin) the account block stays on the right */
+.bar:not(:has(.desktopNav)) {
+  display: flex;
+  justify-content: space-between;
 }

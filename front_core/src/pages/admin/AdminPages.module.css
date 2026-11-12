@@ -254,3 +254,55 @@
 .linkButton:hover {
   text-decoration-thickness: 2px;
 }
+
+@media (max-width: 959px) {
+  .buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* mobile: row actions are full-width pills */
+@media (max-width: 959px) {
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+
+  .actions .link,
+  .actions .linkButton,
+  [class*='row'] > a.link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  .actions .link,
+  [class*='row'] > a.link {
+    background: var(--secondary);
+  }
+
+  .actions .linkButton {
+    border: var(--stroke-1) solid var(--border);
+    background: var(--paper);
+  }
+}
+
+.mobileLabel {
+  display: none;
+}
+
+@media (max-width: 959px) {
+  .mobileLabel {
+    display: block;
+    font-size: 11px;
+    line-height: 17px;
+    color: var(--muted);
+  }
+}

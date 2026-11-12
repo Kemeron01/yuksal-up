@@ -136,13 +136,18 @@
     line-height: 36px;
   }
 
+  .navText,
+  .note {
+    display: none;
+  }
+
   .links {
     flex-direction: row;
     flex-wrap: wrap;
   }
 
   .footer {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr auto;
   }
 }
 

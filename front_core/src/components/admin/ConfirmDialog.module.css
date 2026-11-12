@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--gutter);
-  background: rgba(31, 48, 94, 0.45);
+  background: rgba(31, 48, 94, 0.92);
 }
 
 .dialog {
@@ -74,4 +74,11 @@
 
 .close:hover {
   background: var(--secondary);
+}
+
+@media (max-width: 959px) {
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }

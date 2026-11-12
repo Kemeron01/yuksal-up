@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
 import { Bookmark } from 'lucide-react';
 import { StudentShell } from '@/components/student/StudentShell';
 import { PageHeading } from '@/components/student/PageHeading';
 import { OpportunityCard } from '@/components/student/OpportunityCard';
 import { OPPORTUNITIES } from '@/data/opportunities';
 import { useSaved } from '@/data/saved';
+import { Button } from '@/components/ui/Button';
 import styles from './SavedPage.module.css';
 import { useI18n } from '@/i18n';
 
@@ -16,7 +16,7 @@ export function SavedPage() {
 
   return (
     <StudentShell active="saved">
-      <PageHeading title={tt('Saqlangan imkoniyatlar')} text={tt('Yaxshi imkoniyatni yo‘qotib qo‘ymang.')} status={tt('{count} ta saqlangan', { count: items.length })} />
+      <PageHeading title={tt('Saqlangan imkoniyatlar')} text={tt('Yaxshi imkoniyatni yo‘qotib qo‘ymang.')} />
       <div className={styles.list}>
         {items.length > 0 ? (
           items.map((o) => <OpportunityCard key={o.id} item={o} />)
@@ -27,9 +27,9 @@ export function SavedPage() {
             </span>
             <h2 className={styles.title}>{tt('Hali hech narsa saqlanmagan')}</h2>
             <p className={styles.text}>{tt('Imkoniyat kartasidagi belgi orqali saqlang.')}</p>
-            <Link to="/opportunities" className={styles.pill}>
+            <Button flush to="/opportunities">
               {tt('Imkoniyatlarni topish')}
-            </Link>
+            </Button>
           </section>
         )}
       </div>

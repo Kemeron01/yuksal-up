@@ -7,7 +7,6 @@ import { Status } from '@/components/ui/Status';
 import { useAuth } from '@/data/auth';
 import styles from './AdminPages.module.css';
 import { useI18n } from '@/i18n';
-import { localizeGrade } from '@/data/opportunities';
 
 /** 02 · Users list. */
 export function UsersPage() {
@@ -33,7 +32,7 @@ export function UsersPage() {
               {u.sample && <Chip label={tt('Namuna')} asStatic />}
             </div>
             <p className={styles.body}>
-              {u.grade ? localizeGrade(u.grade, tt) : '—'} · {u.region ? tt(u.region) : '—'}
+              {u.grade ? u.grade.replace('-sinf', '') : '—'} · {u.region ? tt(u.region) : '—'}
             </p>
             <div>
               <Status state={u.suspended ? 'closed' : 'open'} label={u.suspended ? tt('To‘xtatilgan') : tt('Faol')} compact />

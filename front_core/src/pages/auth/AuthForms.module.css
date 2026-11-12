@@ -15,12 +15,9 @@
 }
 
 .demo {
-  padding: var(--space-16);
-  border-radius: var(--radius-20);
-  background: var(--soft-yellow);
   font-size: 12px;
   line-height: 18px;
-  color: var(--navy);
+  color: var(--muted);
 }
 
 .status {
@@ -42,4 +39,22 @@
 
 .linkButton:hover {
   text-decoration-thickness: 2px;
+}
+
+.linkRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--muted);
+}
+
+.linkRow .linkButton {
+  align-self: auto;
+  font-size: 12px;
+  line-height: 18px;
+  text-decoration: none;
 }

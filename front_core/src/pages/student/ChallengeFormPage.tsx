@@ -24,6 +24,7 @@ export function ChallengeFormPage() {
   const [confirmed, setConfirmed] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [fileError, setFileError] = useState<string | null>(null);
   const [draftSaved, setDraftSaved] = useState(false);
   const fileInput = useRef<HTMLInputElement>(null);
 
@@ -32,20 +33,20 @@ export function ChallengeFormPage() {
   const onFile = (f: File | undefined) => {
     if (!f) return;
     if (f.type !== 'application/pdf') {
-      setError(tt('Faqat PDF fayl yuklash mumkin.'));
+      setFileError(tt('Faqat PDF fayl yuklash mumkin.'));
       return;
     }
     if (f.size > MAX_PDF) {
-      setError(tt('Fayl hajmi 10 MB dan oshmasligi kerak.'));
+      setFileError(tt('10 MB gacha bo‘lgan PDF tanlang.'));
       return;
     }
-    setError(null);
+    setFileError(null);
     setFile(f);
   };
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (!text.trim()) return setError(tt('Taklifingizni yozing.'));
+    if (!text.trim()) return setError(tt('Takliflarni aniqroq yozing va natijani qanday o‘lchashingizni tushuntiring.'));
     if (!confirmed) return setError(tt('Yechim o‘zingizniki ekanini tasdiqlang.'));
     setError(null);
     submit(challenge.id, text.trim(), file?.name);
@@ -96,7 +97,7 @@ export function ChallengeFormPage() {
 
           <div className={styles.field}>
             <p className={styles.label}>{tt('Qo‘shimcha PDF · ixtiyoriy')}</p>
-            <div className={styles.upload}>
+            <div className={`${styles.upload} ${fileError ? styles.uploadError : ''}`}>
               <span className={styles.uploadIcon} aria-hidden>
                 <FileTextIcon />
               </span>
@@ -108,10 +109,18 @@ export function ChallengeFormPage() {
                 onChange={(e) => onFile(e.target.files?.[0])}
               />
               <Button variant="secondary" onClick={() => fileInput.current?.click()} className={styles.pick}>
-                {file ? tt('Boshqa fayl tanlash') : tt('PDF fayl tanlash')}
+                {file ? tt('Boshqa fayl tanlash') : tt('Tanlash')}
               </Button>
-              <p className={styles.help}>{file ? file.name : tt('PDF · 10 MB gacha')}</p>
+              <div className={styles.fileText}>
+                <p className={styles.fileName}>{file ? file.name : tt('PDF fayl tanlash')}</p>
+                <p className={styles.help}>{tt('PDF · 10 MB gacha')}</p>
+              </div>
             </div>
+            {fileError && (
+              <p className={styles.fileError} role="alert">
+                {fileError}
+              </p>
+            )}
           </div>
 
           <Checkbox

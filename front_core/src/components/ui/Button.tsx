@@ -1,8 +1,19 @@
 import { Link } from 'react-router-dom';
 import type { CSSProperties, MouseEventHandler, ReactNode } from 'react';
+import { Button as ShadcnButton } from '@/components/shadcn/button';
+import { cn } from '@/lib/utils';
 import styles from './Button.module.css';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'accent' | 'soft' | 'active';
+
+const VARIANT = {
+  primary: 'default',
+  secondary: 'secondary',
+  outline: 'outline',
+  accent: 'accent',
+  soft: 'soft',
+  active: 'active',
+} as const;
 
 interface ButtonProps {
   variant?: ButtonVariant;
@@ -23,8 +34,17 @@ interface ButtonProps {
   'aria-label'?: string;
   'aria-pressed'?: boolean;
   'aria-expanded'?: boolean;
+  'aria-selected'?: boolean;
+  role?: string;
+  /** Removes the 8px focus-inset slot padding (pills that sit flush in the layout). */
+  flush?: boolean;
+  state?: unknown;
 }
 
+/**
+ * App button: the shadcn/ui Button (themed to the design) inside the 8px focus-inset slot.
+ * Renders a <button>, a router <Link> (`to`) or an <a> (`href`).
+ */
 export function Button({
   variant = 'primary',
   href,
@@ -35,31 +55,32 @@ export function Button({
   disabled = false,
   wide = false,
   block = false,
+  flush = false,
+  state,
   slot,
   className,
   ...aria
 }: ButtonProps) {
-  const inner = [styles.button, styles[variant], wide ? styles.wide : '', block ? styles.fill : ''].join(' ');
+  const inner = cn(wide && 'min-w-44', block && 'min-w-0 flex-1');
   const toPx = (v: number | string) => (typeof v === 'number' ? `${v}px` : v);
-  const slotStyle = slot
-    ? ({ '--slot-d': toPx(slot[0]), '--slot-m': toPx(slot[1]) } as CSSProperties)
-    : undefined;
-  const slotClass = [styles.slot, slot ? styles.sized : '', block ? styles.block : '', className ?? ''].join(' ');
+  const slotStyle = slot ? ({ '--slot-d': toPx(slot[0]), '--slot-m': toPx(slot[1]) } as CSSProperties) : undefined;
+  const slotClass = [styles.slot, slot ? styles.sized : '', slot && slot[1] === '100%' ? styles.fillMobile : '', block ? styles.block : '', flush ? styles.flush : '', className ?? ''].join(' ');
+  const shadcnVariant = VARIANT[variant];
 
   return (
     <span className={slotClass} style={slotStyle}>
       {to && !disabled ? (
-        <Link className={inner} to={to} onClick={onClick} {...aria}>
+        <ShadcnButton variant={shadcnVariant} className={inner} nativeButton={false} render={<Link to={to} state={state} />} onClick={onClick} {...aria}>
           {children}
-        </Link>
+        </ShadcnButton>
       ) : href && !disabled ? (
-        <a className={inner} href={href} onClick={onClick} {...aria}>
+        <ShadcnButton variant={shadcnVariant} className={inner} nativeButton={false} render={<a href={href} />} onClick={onClick} {...aria}>
           {children}
-        </a>
+        </ShadcnButton>
       ) : (
-        <button type={type} className={inner} onClick={onClick} disabled={disabled} {...aria}>
+        <ShadcnButton variant={shadcnVariant} className={inner} type={type} onClick={onClick} disabled={disabled} {...aria}>
           {children}
-        </button>
+        </ShadcnButton>
       )}
     </span>
   );

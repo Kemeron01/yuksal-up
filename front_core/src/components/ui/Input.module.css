@@ -8,8 +8,8 @@
 
 .label {
   font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 12px;
+  line-height: 18px;
   color: var(--navy);
 }
 
@@ -20,12 +20,12 @@
 .field {
   height: 44px;
   width: 100%;
-  padding: var(--space-12);
+  padding: 0 var(--space-16);
   border: var(--stroke-1) solid var(--line);
-  border-radius: var(--radius-20);
+  border-radius: var(--radius-pill);
   background: var(--paper);
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 13px;
   line-height: 21px;
   color: var(--navy);
 }
@@ -42,10 +42,11 @@
 }
 
 /* error = soft-yellow fill + 3px strong border + explicit message */
-.error {
-  background: var(--soft-yellow);
-  border-color: var(--navy);
-  box-shadow: 0 0 0 2px var(--navy);
+.error,
+.error:hover:not(:disabled):not(:focus) {
+  background: var(--paper);
+  border-color: var(--negative);
+  box-shadow: none;
 }
 
 .field:disabled {
@@ -61,7 +62,7 @@
 }
 
 .helperError {
-  color: var(--navy);
+  color: var(--negative);
 }
 
 .field {

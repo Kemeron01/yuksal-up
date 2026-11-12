@@ -85,7 +85,8 @@ export function findChallenge(id: string | undefined): Challenge | undefined {
   return CHALLENGES.find((c) => c.id === id);
 }
 
-export type SubmissionStatus = 'submitted' | 'reviewed';
+/** submitted = waiting for review; accepted / rejected = the admin's decision. */
+export type SubmissionStatus = 'submitted' | 'accepted' | 'rejected';
 
 export interface Submission {
   challengeId: string;
@@ -115,7 +116,7 @@ export const DEMO_SUBMISSION: Submission = {
   fileName: 'kutubxona-rejasi.pdf',
   submittedAt: '24 oktabr 2026 · 14:30 · Asia/Tashkent',
   submittedDate: '2026-10-24',
-  status: 'reviewed',
+  status: 'accepted',
   feedback: {
     text:
       'Taklifingiz aniq va amalga oshirish oson. Qaytarilgan kitoblar qanday qayd etilishini qo‘shing va kutish vaqti uchun o‘lchanadigan maqsad belgilang. Bir haftalik sinov davomida o‘quvchilarning fikrini ham yig‘ib boring.',
@@ -138,12 +139,18 @@ const SEED: Record<string, Submission> = {
   },
 };
 
-const KEY = 'yuksalup:submissions:v2';
+const KEY = 'yuksalup:submissions:v3';
 
 function read(): Record<string, Submission> {
   try {
     const raw = window.localStorage.getItem(KEY);
-    if (raw) return JSON.parse(raw) as Record<string, Submission>;
+    if (raw) {
+      const parsed = JSON.parse(raw) as Record<string, Submission & { status: string }>;
+      Object.values(parsed).forEach((x) => {
+        if ((x.status as string) === 'reviewed') x.status = 'accepted';
+      });
+      return parsed as Record<string, Submission>;
+    }
   } catch {
     /* storage unavailable */
   }
@@ -165,7 +172,7 @@ interface SubmissionsValue {
   mine: (challengeId: string) => Submission | undefined;
   submit: (challengeId: string, text: string, fileName?: string) => void;
   /** admin: publish (or update) written feedback */
-  review: (studentEmail: string, challengeId: string, feedback: string) => void;
+  review: (studentEmail: string, challengeId: string, feedback: string, decision: 'accepted' | 'rejected') => void;
   find: (studentEmail: string, challengeId: string) => Submission | undefined;
 }
 
@@ -206,12 +213,12 @@ export function SubmissionsProvider({ children }: { children: ReactNode }) {
     [user],
   );
 
-  const review = useCallback((studentEmail: string, challengeId: string, feedback: string) => {
+  const review = useCallback((studentEmail: string, challengeId: string, feedback: string, decision: 'accepted' | 'rejected') => {
     setMap((cur) => {
       const k = keyOf(studentEmail, challengeId);
       const existing = cur[k];
       if (!existing) return cur;
-      return persist({ ...cur, [k]: { ...existing, status: 'reviewed', feedback: { text: feedback, at: nowLabel() } } });
+      return persist({ ...cur, [k]: { ...existing, status: decision, feedback: { text: feedback, at: nowLabel() } } });
     });
   }, []);
 

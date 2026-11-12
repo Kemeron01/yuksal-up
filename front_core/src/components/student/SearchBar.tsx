@@ -41,7 +41,7 @@ export function SearchBar({ value, onSearch, onToggleFilters, filtersOpen }: Sea
           {tt('Qidirish')}
         </Button>
         {onToggleFilters && (
-          <Button variant="secondary" onClick={onToggleFilters} aria-expanded={filtersOpen} className={styles.filters}>
+          <Button variant="outline" onClick={onToggleFilters} aria-expanded={filtersOpen} className={styles.filters}>
             {tt('Filtrlar')}
           </Button>
         )}

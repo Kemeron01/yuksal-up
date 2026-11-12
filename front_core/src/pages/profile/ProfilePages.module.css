@@ -106,3 +106,48 @@
   flex-direction: column;
   gap: var(--space-16);
 }
+
+.settingRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+
+.rowLabel {
+  font-size: 13px;
+  line-height: 19px;
+  color: var(--navy);
+}
+
+.langSelect {
+  width: 160px;
+}
+
+.langSelect button {
+  height: 36px;
+  font-size: 12px;
+}
+
+.infoBar {
+  width: min(760px, 100%);
+  padding: var(--space-12) var(--space-16);
+  border-radius: var(--radius-pill);
+  background: var(--blue);
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--navy);
+}
+
+.selectField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.fieldLabel {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--navy);
+}

@@ -55,8 +55,6 @@
   width: 288px;
   height: 288px;
   object-fit: contain;
-  /* original illustration, monochrome revision (saturation −1) as in the design */
-  filter: grayscale(1);
 }
 
 .form {
@@ -112,4 +110,9 @@
   .formContent {
     width: 100%;
   }
+}
+
+/* full-width form buttons line up with the inputs (design has no 8px focus inset here) */
+.formContent [class*='slot'] {
+  padding: 0;
 }

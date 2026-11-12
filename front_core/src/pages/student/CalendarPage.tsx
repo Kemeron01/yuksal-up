@@ -1,9 +1,11 @@
 import { useMemo, useState } from 'react';
+import { Button as UiButton } from '@/components/shadcn/button';
 import { Link } from 'react-router-dom';
 import { StudentShell } from '@/components/student/StudentShell';
 import { PageHeading } from '@/components/student/PageHeading';
 import { Status } from '@/components/ui/Status';
 import { useSaved } from '@/data/saved';
+import { Button } from '@/components/ui/Button';
 import styles from './CalendarPage.module.css';
 import { useI18n } from '@/i18n';
 
@@ -82,12 +84,12 @@ export function CalendarPage() {
       <PageHeading title={tt('Taqvim')} text={tt('Muhim sanalar bir joyda. · Asia/Tashkent')} status="" />
 
       <div className={styles.filter}>
-        <button type="button" className={`${styles.pill} ${!onlySaved ? styles.pillActive : ''}`} onClick={() => setOnlySaved(false)}>
+        <Button flush variant={!onlySaved ? 'primary' : 'secondary'} onClick={() => setOnlySaved(false)}>
           {tt('Barcha imkoniyatlar')}
-        </button>
-        <button type="button" className={`${styles.pill} ${onlySaved ? styles.pillActive : ''}`} onClick={() => setOnlySaved(true)}>
+        </Button>
+        <Button flush variant={onlySaved ? 'primary' : 'secondary'} onClick={() => setOnlySaved(true)}>
           {tt('Faqat saqlanganlar')}
-        </button>
+        </Button>
       </div>
 
       <div className={styles.top}>
@@ -97,12 +99,12 @@ export function CalendarPage() {
               {tt(MONTHS[month])} {year}
             </h2>
             <div className={styles.arrows}>
-              <button type="button" className={styles.arrow} onClick={() => move(-1)} aria-label={tt('Oldingi oy')}>
+              <UiButton variant="unstyled" className={styles.arrow} onClick={() => move(-1)} aria-label={tt('Oldingi oy')}>
                 ←
-              </button>
-              <button type="button" className={styles.arrow} onClick={() => move(1)} aria-label={tt('Keyingi oy')}>
+              </UiButton>
+              <UiButton variant="unstyled" className={styles.arrow} onClick={() => move(1)} aria-label={tt('Keyingi oy')}>
                 →
-              </button>
+              </UiButton>
             </div>
           </div>
 
@@ -122,9 +124,8 @@ export function CalendarPage() {
                   const has = byDate.has(date);
                   const isSelected = date === selected;
                   return (
-                    <button
+                    <UiButton variant="unstyled"
                       key={i}
-                      type="button"
                       role="gridcell"
                       className={`${styles.day} ${has ? styles.hasEvent : ''} ${isSelected ? styles.selected : ''}`}
                       aria-pressed={isSelected}
@@ -132,7 +133,7 @@ export function CalendarPage() {
                     >
                       <span className={styles.dayNumber}>{day}</span>
                       {has && <span className={styles.dot}>•</span>}
-                    </button>
+                    </UiButton>
                   );
                 })}
               </div>
@@ -154,9 +155,9 @@ export function CalendarPage() {
               <div key={e.title + e.kind} className={styles.eventBlock}>
                 <p className={styles.eventTitle}>{tt(e.title)}</p>
                 <p className={styles.eventKind}>{tt(KIND_LABEL[e.kind])}</p>
-                <Link className={styles.details} to={e.to}>
+                <Button flush block to={e.to}>
                   {tt('Batafsil')}
-                </Link>
+                </Button>
               </div>
             ))
           ) : (

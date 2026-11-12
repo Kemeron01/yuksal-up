@@ -26,7 +26,7 @@ export function DashboardPage() {
   const metrics = [
     { label: tt('Foydalanuvchilar'), value: String(students.length), note: tt('{real} profil + {sample} namuna akkaunt', { real: students.filter((u) => !u.sample).length, sample: students.filter((u) => u.sample).length }) },
     { label: tt('E’lon qilingan imkoniyatlar'), value: String(published), note: tt('Katalogdagi namunaviy dasturlar') },
-    { label: tt('Tekshirish kutilmoqda'), value: String(waiting), note: tt('O‘quvchilar yuborgan ishlar') },
+    { label: tt('Tekshirish kutilmoqda'), value: String(waiting), note: tt('O‘quvchi yuborgan namunaviy ish') },
   ];
 
   return (
@@ -49,7 +49,7 @@ export function DashboardPage() {
             <p className={styles.strong}>{tt('Yangi imkoniyatni ulashing')}</p>
             <p className={styles.muted}>{tt('Dastur ma’lumotlari va tashqi ariza havolasini qo‘shing.')}</p>
           </div>
-          <Button variant="primary" to="/admin/opportunities/new" slot={[244, 244]}>
+          <Button variant="primary" to="/admin/opportunities/new" slot={[244, '100%']}>
             {tt('Imkoniyat yaratish')}
           </Button>
         </div>
@@ -58,7 +58,7 @@ export function DashboardPage() {
             <p className={styles.strong}>{tt('O‘quvchilar ishlarini tekshiring')}</p>
             <p className={styles.muted}>{tt('{count} ta ish fikr-mulohazangizni kutmoqda.', { count: waiting })}</p>
           </div>
-          <Button variant="secondary" to="/admin/reviews" slot={[244, 244]}>
+          <Button variant="secondary" to="/admin/reviews" slot={[244, '100%']}>
             {tt('Navbatni ochish')}
           </Button>
         </div>

@@ -2,9 +2,16 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-16);
-  padding: var(--space-24);
-  border-radius: var(--radius-32);
-  background: var(--wash);
+  padding: var(--space-24) 26px;
+  border: var(--stroke-1) solid var(--line);
+  border-radius: var(--radius-28);
+  background: var(--card);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  border-color: var(--border);
+  box-shadow: 0 6px 20px rgba(31, 48, 94, 0.06);
 }
 
 .heading {
@@ -18,17 +25,23 @@
   flex: none;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-20);
-  background: var(--secondary);
+  width: 43px;
+  height: 43px;
+  border-radius: var(--radius-pill);
+  background: var(--blue);
 }
 
 .icon {
   display: block;
+  width: 19px;
+  height: 19px;
+}
+
+.iconSmall {
+  display: block;
   flex: none;
-  width: 24px;
-  height: 24px;
+  width: 12px;
+  height: 12px;
 }
 
 .titles {
@@ -42,15 +55,19 @@
 .title {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 24px;
-  line-height: 32px;
-  letter-spacing: -0.3px;
+  font-size: 22px;
+  line-height: 27px;
   color: var(--navy);
 }
 
+.title a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .org {
-  font-size: 14px;
-  line-height: 21px;
+  font-size: 13px;
+  line-height: 19px;
   color: var(--muted);
 }
 
@@ -59,65 +76,117 @@
   flex: none;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-}
-
-.facts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px var(--space-24);
-  font-size: 14px;
-  line-height: 21px;
-  color: var(--muted);
-  white-space: nowrap;
-}
-
-.price {
-  color: var(--navy);
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px var(--space-8);
-}
-
-.deadline,
-.external {
-  display: flex;
-  align-items: center;
-  gap: var(--space-8);
-  font-size: 12px;
-  line-height: 18px;
-  color: var(--muted);
-}
-
-.actions {
-  display: flex;
-}
-
-@media (max-width: 959px) {
-  .title {
-    font-size: 22px;
-    line-height: 30px;
-  }
-}
-
-.bookmark {
+  width: 28px;
+  height: 28px;
   border-radius: var(--radius-pill);
-  transition: background-color 0.15s ease, transform 0.15s ease;
-}
-
-.bookmark:hover {
-  background: var(--secondary);
-  box-shadow: 0 0 0 6px var(--secondary);
-}
-
-.card {
   transition: background-color 0.15s ease;
 }
 
-.card:hover {
+.bookmark:hover {
+  background: var(--blue);
+}
+
+.bookmark .icon {
+  width: 17px;
+  height: 17px;
+}
+
+.meta,
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.meta li {
+  padding: 6px 10px;
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+.tags {
+  gap: 6px;
+}
+
+.tags li {
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
   background: var(--secondary);
+  font-size: 11px;
+  line-height: 17px;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+}
+
+.deadline {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: 10px 11px;
+  border: var(--stroke-1) solid var(--border);
+  border-radius: 16px;
+  background: var(--blue);
+  color: var(--navy);
+}
+
+.deadline p {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.deadlineLabel {
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.deadlineDate {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 19px;
+}
+
+.external {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  line-height: 17px;
+  color: var(--muted);
+}
+
+@media (max-width: 959px) {
+  .card {
+    padding: var(--space-20) var(--space-16);
+  }
+
+  .title {
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  .footer .cta > * {
+    min-width: 0;
+  }
+}
+
+.footer .cta {
+  padding: 0;
+}
+
+.footer .cta > * {
+  min-width: 167px;
 }

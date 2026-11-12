@@ -7,7 +7,7 @@ import { Status } from '@/components/ui/Status';
 import { useAuth } from '@/data/auth';
 import styles from './AdminPages.module.css';
 import { useI18n } from '@/i18n';
-import { formatDeadline, localizeGrade } from '@/data/opportunities';
+import { localizeGrade } from '@/data/opportunities';
 
 /** 03 · User account detail (with the suspend confirmation). */
 export function UserDetailPage() {
@@ -33,7 +33,7 @@ export function UserDetailPage() {
     ['Email', user.email],
     ['Sinf', user.grade ? localizeGrade(user.grade, tt) : '—'],
     ['Hudud', user.region ? tt(user.region) : '—'],
-    ['Ro‘yxatdan o‘tgan', formatDeadline(user.createdAt, tt)],
+    ['Ro‘yxatdan o‘tgan', user.createdAt],
     ['Akkaunt turi', 'O‘quvchi'],
   ];
 
@@ -67,11 +67,11 @@ export function UserDetailPage() {
         }
       >
         {user.suspended ? (
-          <Button variant="primary" onClick={() => setSuspended(user.email, false)} slot={[260, 260]}>
+          <Button variant="primary" onClick={() => setSuspended(user.email, false)} slot={[260, '100%']}>
             {tt('Akkauntni faollashtirish')}
           </Button>
         ) : (
-          <Button variant="secondary" onClick={() => setConfirming(true)} slot={[260, 260]}>
+          <Button variant="secondary" onClick={() => setConfirming(true)} slot={[260, '100%']}>
             {tt('Akkauntni to‘xtatish')}
           </Button>
         )}
@@ -80,10 +80,10 @@ export function UserDetailPage() {
       {confirming && !user.suspended && (
         <AdminPanel title={tt('Akkauntni to‘xtatishni tasdiqlang')} tone="yellow" large={false}>
           <p className={styles.bodyLarge}>
-            {user.name} {user.surname}ning akkaunti “To‘xtatilgan” holatiga o‘tadi. Uni keyin yana faollashtirish mumkin.
+            {tt('{name}ning akkaunti “To‘xtatilgan” holatiga o‘tadi. Uni keyin yana faollashtirish mumkin.', { name: `${user.name} ${user.surname}` })}
           </p>
           <div className={styles.buttons}>
-            <Button variant="outline" onClick={() => setConfirming(false)} slot={[140, 140]}>
+            <Button variant="outline" onClick={() => setConfirming(false)} slot={[140, '100%']}>
               {tt('Bekor qilish')}
             </Button>
             <Button
@@ -92,7 +92,7 @@ export function UserDetailPage() {
                 setSuspended(user.email, true);
                 setConfirming(false);
               }}
-              slot={[217, 217]}
+              slot={[217, '100%']}
             >
               {tt('To‘xtatishni tasdiqlash')}
             </Button>

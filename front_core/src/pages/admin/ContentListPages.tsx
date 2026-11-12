@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { Button as UiButton } from '@/components/shadcn/button';
 import { Link } from 'react-router-dom';
 import { AdminShell } from '@/components/admin/AdminShell';
 import { AdminHeading, AdminRow, AdminSearch, AdminTable } from '@/components/admin/AdminParts';
@@ -9,7 +10,6 @@ import { OPPORTUNITIES } from '@/data/opportunities';
 import { useAdmin, type AdminContent } from '@/data/admin';
 import styles from './AdminPages.module.css';
 import { useI18n } from '@/i18n';
-import { formatDeadline } from '@/data/opportunities';
 
 const CATEGORY_LABEL: Record<string, string> = { Olimpiadalar: 'Olimpiada' };
 
@@ -58,7 +58,10 @@ function ContentTable({ kind }: { kind: 'opportunity' | 'challenge' }) {
                 {i.organizer} · {tt(i.category)}
               </p>
             </div>
-            <p className={styles.body}>{/^\d{4}-\d{2}-\d{2}$/.test(i.deadline) ? formatDeadline(i.deadline, tt) : i.deadline}</p>
+            <p className={styles.body}>
+              <span className={styles.mobileLabel}>{tt('Muddat')}</span>
+              {i.deadline}
+            </p>
             <div>
               <Status state={i.published ? 'open' : 'submitted'} label={i.published ? tt('E’lon qilingan') : tt('Qoralama')} compact />
             </div>
@@ -66,9 +69,9 @@ function ContentTable({ kind }: { kind: 'opportunity' | 'challenge' }) {
               <Link to={`${base}/${i.id}/edit`} className={styles.link}>
                 {tt('Tahrirlash')}
               </Link>
-              <button type="button" className={styles.linkButton} onClick={() => setToDelete(i)}>
+              <UiButton variant="unstyled" className={styles.linkButton} onClick={() => setToDelete(i)}>
                 {tt('O‘chirish')}
-              </button>
+              </UiButton>
             </div>
           </AdminRow>
         ))}
@@ -109,7 +112,7 @@ export function AdminOpportunitiesPage() {
         title={tt('Imkoniyatlar')}
         text={tt('Dasturlarni yarating, yangilang va katalogni tartibda saqlang.')}
         action={
-          <Button variant="primary" to="/admin/opportunities/new" slot={[236, 236]}>
+          <Button variant="primary" to="/admin/opportunities/new" slot={[236, '100%']}>
             {tt('+ Imkoniyat yaratish')}
           </Button>
         }
@@ -129,7 +132,7 @@ export function AdminChallengesPage() {
         title={tt('Topshiriqlar')}
         text={tt('O‘quvchilar mashq qilishi va fikr olishi uchun topshiriqlar.')}
         action={
-          <Button variant="primary" to="/admin/challenges/new" slot={[236, 236]}>
+          <Button variant="primary" to="/admin/challenges/new" slot={[236, '100%']}>
             {tt('+ Topshiriq yaratish')}
           </Button>
         }

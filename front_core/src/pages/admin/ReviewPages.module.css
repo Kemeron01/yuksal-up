@@ -150,3 +150,34 @@
 .back:hover {
   text-decoration-thickness: 2px;
 }
+
+.decision {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.decisionLabel {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--navy);
+}
+
+.sample {
+  display: inline-flex;
+  align-items: center;
+  height: var(--space-32);
+  padding: 0 var(--space-12);
+  border-radius: var(--radius-pill);
+  background: var(--secondary);
+  font-size: 12px;
+  color: var(--navy);
+}
+
+@media (max-width: 959px) {
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

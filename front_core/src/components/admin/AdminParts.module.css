@@ -35,8 +35,18 @@
 
 .search {
   display: flex;
-  align-items: center;
-  gap: var(--space-8);
+  align-items: flex-end;
+  gap: var(--space-12);
+}
+
+/* the button sits on the input line (no 8px focus inset below it) */
+.search .searchButton {
+  padding: 0;
+  flex: none;
+}
+
+.search .searchButton > * {
+  min-width: 120px;
 }
 
 .searchField {
@@ -57,9 +67,9 @@
 .searchInput {
   height: 44px;
   width: 100%;
-  padding: var(--space-12);
+  padding: 0 var(--space-16);
   border: var(--stroke-1) solid var(--line);
-  border-radius: var(--radius-20);
+  border-radius: var(--radius-pill);
   background: var(--paper);
   font-family: var(--font-body);
   font-size: 14px;
@@ -185,6 +195,10 @@
     align-items: stretch;
   }
 
+  .search .searchButton > * {
+    width: 100%;
+  }
+
   /* tables turn into stacked rows on small screens */
   .tableHead {
     display: none;
@@ -198,5 +212,25 @@
   .panelTitleLarge {
     font-size: 28px;
     line-height: 36px;
+  }
+}
+
+/* mobile: every table row becomes its own rounded card (design) */
+@media (max-width: 959px) {
+  .table {
+    padding: 0;
+    gap: var(--space-16);
+    background: transparent;
+  }
+
+  .row,
+  .row + .row,
+  .table > .tableHead + .row,
+  .table > .row:last-child {
+    gap: var(--space-12);
+    padding: var(--space-20);
+    border: 0;
+    border-radius: var(--radius-28);
+    background: var(--wash);
   }
 }

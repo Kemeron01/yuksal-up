@@ -76,7 +76,7 @@ export function NewPasswordPage() {
 
   return (
     <AuthLayout>
-      <PageIntro title={tt('Yangi parol yarating')} text={tt('Yangi parolingizni kiriting va tasdiqlang.')} />
+      <PageIntro title={tt('Yangi parol yarating')} text={tt('Yangi parolni ikki marta kiriting.')} />
       <FormStack onSubmit={onSubmit}>
         <Input
           label={tt('Yangi parol')}
@@ -93,7 +93,7 @@ export function NewPasswordPage() {
         <Input
           label={tt('Parolni takrorlang')}
           type="password"
-          placeholder="••••••••"
+          placeholder={tt('Parolni qayta kiriting')}
           value={repeat}
           error={errors.repeat}
           onChange={(e) => {
@@ -106,7 +106,7 @@ export function NewPasswordPage() {
           {tt('Parolni yangilash')}
         </Button>
       </FormStack>
-      <AuthLink to="/login">{tt('Kirishga qaytish')}</AuthLink>
+      <Hint>{tt('Interaktiv maket · Xatlar yuborilmaydi, parollar saqlanmaydi.')}</Hint>
     </AuthLayout>
   );
 }
@@ -116,16 +116,17 @@ export function PasswordResetSuccessPage() {
   const { tt } = useI18n();
   return (
     <AuthLayout>
-      <StateSymbol>
+      <StateSymbol tone="success">
         <CheckSquareIcon />
       </StateSymbol>
       <PageIntro
-        title={tt('Parolingiz yangilandi')}
-        text={tt('Endi yangi parolingiz bilan YuksalUp hisobingizga kirishingiz mumkin.')}
+        title={tt('Yangi boshlanishga tayyor')}
+        text={tt('Parolni yangilashning muvaffaqiyatli holati ko‘rsatildi.')}
       />
       <Button variant="primary" to="/login" block>
         {tt('Kirishga o‘tish')}
       </Button>
+      <Hint>{tt('Interaktiv maket · Xatlar yuborilmaydi, parollar saqlanmaydi.')}</Hint>
     </AuthLayout>
   );
 }

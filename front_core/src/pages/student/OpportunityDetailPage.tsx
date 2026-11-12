@@ -6,6 +6,7 @@ import { StudentShell } from '@/components/student/StudentShell';
 import { formatDeadline, findOpportunity, opportunityAbout } from '@/data/opportunities';
 import { useRequireLogin } from '@/components/useRequireLogin';
 import { useSaved } from '@/data/saved';
+import { Button } from '@/components/ui/Button';
 import styles from './OpportunityDetailPage.module.css';
 import { useI18n } from '@/i18n';
 
@@ -62,7 +63,7 @@ export function OpportunityDetailPage() {
             <h2 className={styles.h2}>{tt('Kimlar uchun?')}</h2>
             <div className={styles.text}>
               <p>{tt('{grades} o‘quvchilari.', { grades: tt(item.grades) })}</p>
-              <p>{tt('&nbsp;')}</p>
+              <p aria-hidden>{'\u00a0'}</p>
               <p>{tt('• Yo‘nalishga qiziqish va o‘rganishga tayyorlik.')}</p>
               <p>{tt('• Tashkilotchining to‘liq talablarini rasmiy sahifada tekshiring.')}</p>
             </div>
@@ -105,12 +106,12 @@ export function OpportunityDetailPage() {
             </div>
           </dl>
 
-          <button type="button" className={`${styles.pill} ${styles.primary}`} onClick={() => setHandoff(true)}>
+          <Button flush block onClick={() => setHandoff(true)}>
             {tt('Tashkilot saytida davom etish')}
-          </button>
-          <button type="button" className={`${styles.pill} ${styles.secondary}`} onClick={() => requireLogin(() => toggle(item.id))} aria-pressed={saved}>
+          </Button>
+          <Button flush block variant="secondary" onClick={() => requireLogin(() => toggle(item.id))} aria-pressed={saved}>
             {saved ? tt('Saqlangan') : tt('Saqlash')}
-          </button>
+          </Button>
 
           {handoff && (
             <div className={styles.handoff} role="status">

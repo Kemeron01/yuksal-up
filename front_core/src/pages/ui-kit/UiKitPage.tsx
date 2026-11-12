@@ -130,7 +130,8 @@ export function UiKitPage() {
       <Section title="Status labels" text="Clear words for availability, submissions and review outcomes.">
         <Specimen caption="Open"><Status state="open" /></Specimen>
         <Specimen caption="Submitted"><Status state="submitted" /></Specimen>
-        <Specimen caption="Reviewed"><Status state="reviewed" /></Specimen>
+        <Specimen caption="Accepted"><Status state="accepted" /></Specimen>
+        <Specimen caption="Rejected"><Status state="rejected" /></Specimen>
         <Specimen caption="Closed"><Status state="closed" /></Specimen>
       </Section>
     </main>

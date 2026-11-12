@@ -12,6 +12,8 @@ export interface Account {
   suspended: boolean;
   grade: string;
   region: string;
+  /** school name or number (optional) */
+  school?: string;
   interests: string[];
   /** seeded demo accounts are labelled "Namuna" in the admin panel */
   sample: boolean;
@@ -48,7 +50,7 @@ const SEED: Account[] = [
     verified: true,
     suspended: false,
     grade: '10-sinf',
-    region: 'Toshkent',
+    region: 'Toshkent shahri',
     interests: ['Texnologiya', 'Jamiyat'],
     sample: false,
     createdAt: '2026-10-20',
@@ -76,7 +78,7 @@ const SEED: Account[] = [
     verified: true,
     suspended: false,
     grade: '9-sinf',
-    region: 'Toshkent',
+    region: 'Toshkent shahri',
     interests: ['Ijod'],
     sample: true,
     createdAt: '2026-10-23',
@@ -118,8 +120,10 @@ interface AuthValue {
   verifyEmail: (email: string) => boolean;
   login: (email: string, password: string) => LoginResult;
   logout: () => void;
-  updateProfile: (patch: Partial<Pick<Account, 'name' | 'surname' | 'grade' | 'region' | 'interests'>>) => void;
+  updateProfile: (patch: Partial<Pick<Account, 'name' | 'surname' | 'grade' | 'region' | 'school' | 'interests'>>) => void;
   changePassword: (current: string, next: string) => boolean;
+  /** true when `password` is the signed-in account's current password */
+  checkPassword: (password: string) => boolean;
   accountExists: (email: string) => boolean;
   resetPassword: (email: string, password: string) => boolean;
   setSuspended: (email: string, suspended: boolean) => void;
@@ -216,6 +220,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     [session],
   );
 
+  const checkPassword = useCallback(
+    (password: string) => accounts.find((a) => a.email === session)?.password === password,
+    [accounts, session],
+  );
+
   const changePassword = useCallback(
     (current: string, next: string) => {
       const me = accounts.find((a) => a.email === session);
@@ -243,8 +252,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
 
   const value = useMemo<AuthValue>(
-    () => ({ user, accounts, register, verifyEmail, login, logout, updateProfile, changePassword, accountExists, resetPassword, setSuspended }),
-    [user, accounts, register, verifyEmail, login, logout, updateProfile, changePassword, accountExists, resetPassword, setSuspended],
+    () => ({ user, accounts, register, verifyEmail, login, logout, updateProfile, changePassword, checkPassword, accountExists, resetPassword, setSuspended }),
+    [user, accounts, register, verifyEmail, login, logout, updateProfile, changePassword, checkPassword, accountExists, resetPassword, setSuspended],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

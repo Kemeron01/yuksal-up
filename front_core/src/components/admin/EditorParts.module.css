@@ -162,3 +162,10 @@
 .textarea:hover:not(:focus) {
   border-color: var(--navy);
 }
+
+@media (max-width: 959px) {
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

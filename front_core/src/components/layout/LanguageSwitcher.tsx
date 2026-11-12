@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import { Button as UiButton } from '@/components/shadcn/button';
+import { ChevronDownIcon } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { LOCALES, useI18n } from '@/i18n';
 import styles from './LanguageSwitcher.module.css';
@@ -27,14 +29,13 @@ export function LanguageSwitcher() {
   return (
     <div className={styles.root} ref={ref}>
       <Button variant="outline" className={styles.trigger} onClick={() => setOpen((v) => !v)} aria-expanded={open}>
-        {locale.toUpperCase()}
+        {locale.toUpperCase()} <ChevronDownIcon size={12} aria-hidden />
       </Button>
       {open && (
         <ul className={styles.menu}>
           {LOCALES.map((code) => (
             <li key={code}>
-              <button
-                type="button"
+              <UiButton variant="unstyled"
                 className={`${styles.option} ${code === locale ? styles.current : ''}`}
                 onClick={() => {
                   setLocale(code);
@@ -42,7 +43,7 @@ export function LanguageSwitcher() {
                 }}
               >
                 {code.toUpperCase()}
-              </button>
+              </UiButton>
             </li>
           ))}
         </ul>

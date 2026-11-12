@@ -21,7 +21,23 @@ export interface Opportunity {
 
 export const INTERESTS = ['Texnologiya', 'Jamiyat', 'Ekologiya', 'Liderlik', 'Tillar', 'Fan', 'Ijod'];
 export const CATEGORIES: OpportunityCategory[] = ['Amaliyot', 'Volontyorlik', 'Debatlar', 'Olimpiadalar'];
-export const REGIONS = ['Barcha hududlar', 'Toshkent', 'Samarqand', 'Onlayn'];
+export const REGIONS = [
+  'Toshkent shahri',
+  'Toshkent viloyati',
+  'Samarqand',
+  'Andijon',
+  'Buxoro',
+  'Farg‘ona',
+  'Jizzax',
+  'Xorazm',
+  'Namangan',
+  'Navoiy',
+  'Qashqadaryo',
+  'Qoraqalpog‘iston',
+  'Surxondaryo',
+  'Sirdaryo',
+  'Onlayn',
+];
 export const FORMATS = ['Barchasi', 'Onlayn', 'Oflayn'] as const;
 
 export const OPPORTUNITIES: Opportunity[] = [
@@ -41,7 +57,7 @@ export const OPPORTUNITIES: Opportunity[] = [
     id: 'tech-internship',
     title: 'Yoshlar uchun texnologiya amaliyoti',
     organization: 'Next Step Lab',
-    region: 'Toshkent',
+    region: 'Toshkent shahri',
     category: 'Amaliyot',
     format: 'Oflayn',
     price: 'Bepul',
@@ -91,6 +107,14 @@ export const OPPORTUNITIES: Opportunity[] = [
 ];
 
 export const MONTHS_GEN = ['yanvar', 'fevral', 'mart', 'aprel', 'may', 'iyun', 'iyul', 'avgust', 'sentyabr', 'oktyabr', 'noyabr', 'dekabr'];
+
+const MONTHS_SHORT = ['yan', 'fev', 'mar', 'apr', 'may', 'iyn', 'iyl', 'avg', 'sen', 'okt', 'noy', 'dek'];
+
+/** "2026-11-08" → "8 noy, 2026" (card deadline box). */
+export function formatShortDate(iso: string, tt: (s: string) => string = (s) => s): string {
+  const [y, m, d] = iso.split('-').map(Number);
+  return `${d} ${tt(MONTHS_SHORT[m - 1])}, ${y}`;
+}
 
 /** "2026-11-08" → "8 noyabr 2026" in the active language (`tt` translates the month name). */
 export function formatDeadline(iso: string, tt: (s: string) => string = (s) => s): string {

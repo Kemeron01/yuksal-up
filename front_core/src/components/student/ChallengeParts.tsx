@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/Button';
 import styles from './ChallengeParts.module.css';
 import { useI18n } from '@/i18n';
 import { localizeDate } from '@/data/opportunities';
@@ -10,7 +11,7 @@ export function Breadcrumbs({ items }: { items: { label: string; to?: string }[]
     <nav className={styles.crumbs} aria-label={tt('Breadcrumbs')}>
       {items.map((item, i) => (
         <span key={item.label} className={styles.crumb}>
-          {i > 0 && <span aria-hidden>{tt('›&nbsp;')} </span>}
+          {i > 0 && <span aria-hidden>›{'\u00a0'}</span>}
           {item.to ? <Link to={item.to}>{tt(item.label)}</Link> : tt(item.label)}
         </span>
       ))}
@@ -24,15 +25,20 @@ export function ChallengeSteps({ current, title, footer }: { current: 1 | 2 | 3;
   const steps = ['Vazifani o‘qing', 'Yechim yuboring', 'Fikr-mulohaza oling'];
   return (
     <aside className={styles.steps}>
-      <p className={styles.stepsTitle}>{title}</p>
+      <p className={styles.stepsTitle}>{title.toUpperCase()}</p>
       <ol className={styles.stepList}>
         {steps.map((label, i) => {
           const n = i + 1;
           const active = n === current;
           return (
             <li key={label} className={styles.step} aria-current={active ? 'step' : undefined}>
-              <span className={`${styles.number} ${active ? styles.numberActive : ''}`}>{n}</span>
-              <span className={`${styles.stepLabel} ${active ? styles.stepLabelActive : ''}`}>{tt(label)}</span>
+              <span className={`${styles.number} ${active ? styles.numberActive : ''} ${n < current ? styles.numberDone : ''}`}>
+                {n < current ? '✓' : n}
+              </span>
+              <span className={styles.stepText}>
+                <span className={`${styles.stepLabel} ${active ? styles.stepLabelActive : ''}`}>{tt(label)}</span>
+                <span className={styles.stepState}>{n < current ? tt('Bajarildi') : active ? tt('Hozirgi bosqich') : tt('Keyingi bosqich')}</span>
+              </span>
             </li>
           );
         })}
@@ -83,8 +89,8 @@ export function ChallengeFacts({
 
 export function PillLink({ to, variant = 'secondary', children }: { to: string; variant?: 'primary' | 'secondary'; children: ReactNode }) {
   return (
-    <Link to={to} className={`${styles.pill} ${variant === 'primary' ? styles.primary : styles.secondary}`}>
+    <Button flush to={to} variant={variant}>
       {children}
-    </Link>
+    </Button>
   );
 }

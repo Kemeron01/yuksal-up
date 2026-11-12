@@ -309,3 +309,26 @@
 .pillActive:hover {
   background: var(--navy-hover);
 }
+
+@media (max-width: 959px) {
+  .filter {
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .filter .pill {
+    flex: none;
+    width: 100%;
+  }
+}
+
+@media (max-width: 959px) {
+  .filter > * {
+    display: flex;
+    width: 100%;
+  }
+
+  .filter > * > * {
+    flex: 1 1 auto;
+  }
+}

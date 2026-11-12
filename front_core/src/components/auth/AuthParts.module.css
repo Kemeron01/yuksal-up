@@ -5,17 +5,18 @@
 }
 
 .caption {
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 11px;
+  line-height: 17px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   color: var(--muted);
 }
 
 .title {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 36px;
-  line-height: 44px;
-  letter-spacing: -0.8px;
+  font-size: 32px;
+  line-height: 40px;
   color: var(--navy);
 }
 
@@ -32,8 +33,14 @@
   justify-content: center;
   width: 64px;
   height: 64px;
-  border-radius: var(--radius-24);
-  background: var(--yellow);
+  border-radius: var(--radius-20);
+  background: var(--blue);
+  color: var(--navy);
+}
+
+.success {
+  background: var(--positive-bg);
+  color: var(--positive);
 }
 
 .symbolIcon {
@@ -42,20 +49,19 @@
   height: 24px;
 }
 
+
 .email {
   display: flex;
   align-items: center;
   gap: var(--space-12);
-  padding: var(--space-16);
-  border: var(--stroke-1) solid var(--line);
-  border-radius: var(--radius-20);
+  padding: var(--space-12) var(--space-16);
+  border-radius: var(--radius-pill);
+  background: var(--blue);
 }
 
+
 .emailIcon {
-  display: block;
-  flex: none;
-  width: 24px;
-  height: 24px;
+  display: none;
 }
 
 .emailText {
@@ -68,11 +74,10 @@
 }
 
 .link {
-  font-size: 14px;
-  line-height: 21px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
   color: var(--navy);
-  text-decoration: underline;
-  text-underline-position: from-font;
 }
 
 .center {
@@ -80,8 +85,9 @@
 }
 
 .hint {
-  font-size: 14px;
-  line-height: 21px;
+  font-size: 11px;
+  line-height: 17px;
+  text-align: center;
   color: var(--muted);
 }
 
@@ -103,10 +109,11 @@
 
 .account {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-4);
-  font-size: 14px;
-  line-height: 21px;
+  font-size: 12px;
+  line-height: 18px;
   text-align: center;
 }
 
@@ -116,7 +123,8 @@
 
 .accountLink {
   color: var(--navy);
-  text-decoration: underline;
+  font-weight: 500;
+  text-decoration: none;
   text-underline-position: from-font;
 }
 
@@ -152,4 +160,9 @@
 .accountLink:hover,
 .link:hover {
   text-decoration-thickness: 2px;
+}
+
+.error {
+  background: var(--negative-bg);
+  color: var(--negative);
 }

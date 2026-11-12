@@ -64,7 +64,7 @@ const EXAMPLE: Draft = {
   topics: ['Texnologiya'],
   deadline: '2026-11-12',
   grades: '9–11',
-  region: 'Toshkent',
+  region: 'Toshkent shahri',
   format: 'Oflayn',
   start: '2026-11-20',
   end: '2026-11-27',

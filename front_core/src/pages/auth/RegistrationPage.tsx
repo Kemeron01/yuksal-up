@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthLayout } from '@/components/auth/AuthLayout';
-import { AccountLink, AuthLink, FieldRow, FormStack, Notice, PageIntro } from '@/components/auth/AuthParts';
+import { AccountLink, Hint, AuthLink, FieldRow, FormStack, Notice, PageIntro } from '@/components/auth/AuthParts';
 import { Button } from '@/components/ui/Button';
 import { Checkbox } from '@/components/ui/Checkbox';
 import { Input } from '@/components/ui/Input';
@@ -38,7 +38,7 @@ export function RegistrationPage() {
     const next: Errors = {};
     if (!form.name.trim()) next.name = tt('Ismingizni kiriting.');
     if (!form.surname.trim()) next.surname = tt('Familiyangizni kiriting.');
-    if (!EMAIL_RE.test(form.email.trim())) next.email = tt('To‘g‘ri email manzilini kiriting.');
+    if (!EMAIL_RE.test(form.email.trim())) next.email = tt('Email manzilini tekshiring.');
     if (form.password.length < 8) next.password = tt('Parol kamida 8 ta belgidan iborat bo‘lsin.');
     if (!consent) next.consent = tt('Davom etish uchun rozilik bering.');
     if (Object.keys(next).length) return setErrors(next);
@@ -112,6 +112,7 @@ export function RegistrationPage() {
         </Button>
       </FormStack>
       <AccountLink question={tt('Akkauntingiz bormi?')} to="/login" label={tt('Kirish')} />
+      <Hint>{tt('Interaktiv maket · Xatlar yuborilmaydi, parollar saqlanmaydi.')}</Hint>
     </AuthLayout>
   );
 }

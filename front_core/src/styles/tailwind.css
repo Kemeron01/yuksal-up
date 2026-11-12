@@ -1,0 +1,40 @@
+/*
+ * Tailwind is used only for shadcn/ui components (Button, Drawer): theme + utilities, no preflight.
+ * Layer order matters: un-layered CSS Modules always win over utilities, and our global reset sits in `base`.
+ */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* shadcn semantic colors → YuksalUp tokens (src/styles/tokens.css) */
+@theme inline {
+  --color-background: var(--paper);
+  --color-foreground: var(--navy);
+  --color-popover: var(--paper);
+  --color-popover-foreground: var(--navy);
+  --color-primary: var(--navy);
+  --color-primary-foreground: var(--text-inverse);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--navy);
+  --color-muted: var(--wash);
+  --color-muted-foreground: var(--muted);
+  --color-accent: var(--blue);
+  --color-accent-foreground: var(--navy);
+  --color-destructive: var(--negative);
+  --color-border: var(--border);
+  --color-input: var(--border);
+  --color-ring: var(--navy);
+
+  /* brand colors used directly by the Button variants */
+  --color-navy: var(--navy);
+  --color-navy-hover: var(--navy-hover);
+  --color-paper: var(--paper);
+  --color-wash: var(--wash);
+  --color-gray: var(--gray);
+  --color-yellow: var(--yellow);
+  --color-soft-yellow: var(--soft-yellow);
+  --color-blue: var(--blue);
+  --color-negative: var(--negative);
+  --color-negative-bg: var(--negative-bg);
+
+}

@@ -15,15 +15,14 @@
 .title {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 36px;
-  line-height: 44px;
-  letter-spacing: -0.8px;
+  font-size: 34px;
+  line-height: 42px;
   color: var(--navy);
 }
 
 .text {
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 15px;
+  line-height: 22px;
   color: var(--muted);
 }
 

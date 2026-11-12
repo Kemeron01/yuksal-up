@@ -11,6 +11,13 @@
   --secondary: #efefef;
   --soft-yellow: #fff8dc;
   --navy-hover: #2a3f75;
+  --border: #b9c5df; /* revision/color/border */
+  --card: #fafbfc; /* revision/color/card */
+  --blue: #eef2fb; /* revision/color/blue */
+  --positive: #187348;
+  --positive-bg: #e8f6ed;
+  --negative: #b93232;
+  --negative-bg: #fff0ef;
 
   /* spacing */
   --space-4: 4px;

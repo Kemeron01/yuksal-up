@@ -80,15 +80,15 @@ export function EditorActions({
     <>
       <hr className={styles.divider} />
       <div className={styles.actions}>
-        <Button variant="outline" onClick={onCancel} slot={[140, 140]}>
+        <Button variant="outline" onClick={onCancel} slot={[140, '100%']}>
           {tt('Bekor qilish')}
         </Button>
         {onBack && (
-          <Button variant="secondary" onClick={onBack} slot={[120, 120]}>
+          <Button variant="secondary" onClick={onBack} slot={[120, '100%']}>
             {tt('← Orqaga')}
           </Button>
         )}
-        <Button variant="primary" type="submit" slot={[primary.width, primary.width]}>
+        <Button variant="primary" type="submit" slot={[primary.width, '100%']}>
           {primary.label}
         </Button>
       </div>

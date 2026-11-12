@@ -1,6 +1,6 @@
 .list {
   display: flex;
-  width: min(850px, 100%);
+  width: min(1006px, 100%);
   flex-direction: column;
   gap: var(--space-20);
   margin: 0 auto;
@@ -9,12 +9,10 @@
 .empty {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-20);
-  padding: var(--space-48);
-  border: var(--stroke-1) solid var(--line);
-  border-radius: var(--radius-32);
-  background: var(--wash);
+  align-items: center;
+  gap: var(--space-16);
+  padding: var(--space-80) var(--space-24);
+  text-align: center;
 }
 
 .icon {
@@ -45,9 +43,9 @@
   padding: var(--space-12) var(--space-20);
   border-radius: var(--radius-pill);
   background: var(--navy);
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 19px;
   color: var(--text-inverse);
 }
 

@@ -15,7 +15,7 @@ export function AuthLayout({ children }: { children: ReactNode }) {
   const { tt } = useI18n();
   return (
     <div className={styles.page}>
-      <Header minimal />
+      <Header wide />
       <main className={styles.content}>
         <div className={styles.split}>
           <aside className={styles.illustration}>

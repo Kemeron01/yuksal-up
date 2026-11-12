@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Button as UiButton } from '@/components/shadcn/button';
+import { useLocation } from 'react-router-dom';
 import { Wordmark } from '@/components/brand/Wordmark';
 import { Button } from '@/components/ui/Button';
 import { MenuIcon } from '@/components/ui/Icons';
@@ -34,6 +35,8 @@ export function Header({ wide = false, contained = false, centered = false, acti
   const close = () => setMenuOpen(false);
 
   const app = Boolean(user);
+  // admin screens navigate with the sidebar, so the header carries only logo, language and account
+  const showNav = user?.role !== 'admin';
   const isAdmin = user?.role === 'admin';
   const links = isAdmin
     ? [
@@ -78,28 +81,28 @@ export function Header({ wide = false, contained = false, centered = false, acti
   }
 
   return (
-    <header
-      className={`${styles.band} ${wide || centered || contained ? styles.wide : ''} ${centered ? styles.centered : ''} ${contained ? styles.contained : ''}`}
-    >
+    <header className={styles.band} data-wide={wide || centered || contained || undefined}>
       <div className={styles.card}>
         <div className={styles.bar}>
           <Wordmark />
 
-          <nav className={styles.desktopNav} aria-label={tt('Main')}>
-            {links.map((l) => (
-              <Button key={l.to} to={l.to} variant={l.variant}>
-                {tt(l.label)}
-              </Button>
-            ))}
-          </nav>
+          {showNav && (
+            <nav className={styles.desktopNav} aria-label={tt('Main')}>
+              {links.map((l) => (
+                <Button key={l.to} to={l.to} variant={l.variant}>
+                  {tt(l.label)}
+                </Button>
+              ))}
+            </nav>
+          )}
 
           <div className={styles.account}>
             {language}
             {account}
           </div>
 
-          <button
-            type="button"
+          {showNav && (
+          <UiButton variant="unstyled"
             className={styles.menuControl}
             aria-label={t.nav.menu}
             aria-expanded={menuOpen}
@@ -108,10 +111,11 @@ export function Header({ wide = false, contained = false, centered = false, acti
             <span className={styles.menuIcon}>
               <MenuIcon />
             </span>
-          </button>
+          </UiButton>
+          )}
         </div>
 
-        {menuOpen && (
+        {showNav && menuOpen && (
           <div className={styles.mobilePanel}>
             <nav className={styles.mobileNav} aria-label={tt('Main')}>
               {links.map((l) => (
@@ -120,15 +124,6 @@ export function Header({ wide = false, contained = false, centered = false, acti
                 </Button>
               ))}
             </nav>
-            <div className={styles.mobileAccount}>
-              {language}
-              {account}
-              {app && user?.role === 'admin' && (
-                <Link to="/admin" className={styles.mobileExtra} onClick={close}>
-                  {tt('Admin panel')}
-                </Link>
-              )}
-            </div>
           </div>
         )}
       </div>
